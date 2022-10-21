@@ -69,7 +69,7 @@ router.post("/signup", async (req, res, next) => {
     };
 
     await User.create(newUser);
-    res.redirect("/"); //! redirigir a middle screen - listado de restaurantes
+    res.redirect("/restaurant"); //! redirigir a middle screen - listado de restaurantes
   } catch (err) {
     next(err);
   }
@@ -109,11 +109,10 @@ router.post("/login", async (req, res, next) => {
       });
       return;
     }
-
-    req.session.loginUser = foundUser;
-
+    //creación de la sesion activa
+    req.session.logeddUser = foundUser;
     req.session.save(() => {
-      res.redirect("/profile");
+      res.redirect("/restaurant");
     });
   } catch (error) {
     next(error);

@@ -10,10 +10,10 @@ router.get("/", (req, res, next) => {
 const authRoutes = require("./auth.routes")
 router.use("/auth", authRoutes)
 
-/*const profileRoutes = require("./profiles.routes")
-router.use("/profile", profileRoutes)*/
+const profileRoutes = require("./profile.routes")
+router.use("/profile", profileRoutes)
 
-/*const ratingRoutes = require("./rating.routes")
-router.use("/rating", ratingRoutes) */
+const restaurantRoutes = require("./restaurant.routes")
+router.use("/restaurant", restaurantRoutes)
 
 module.exports = router;
