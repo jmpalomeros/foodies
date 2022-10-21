@@ -112,10 +112,19 @@ return;
         return;
     }
 
-   res.redirect("/");
+    req.session.loginUser = foundUser;
+
+    req.session.save(() =>{
+        res.redirect("/profile");
+    });
+
+  
+
   } catch(error) {
     next(error)
   }
+
+
 
 });
 
@@ -123,9 +132,10 @@ return;
 router.get("/logout", (req, res, next) => {
     req.session.destroy(() => {
         res.render("auth/logout.hbs")
-        res.redirect("/");
+        //res.redirect("/");
     });
 });
+
 
 
 

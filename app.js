@@ -24,6 +24,16 @@ const projectName = "foodies";
 
 app.locals.appTitle = `${capitalize(projectName)}`;
 
+// Ejecuciones de middleware para variables locales
+app.use((req, res, next) => {
+    if(req.session.loginUser === undefined) {
+        res.locals.isLoginUser = false
+    } else {
+        res.locals.isLoginUser = true
+    }
+    next()
+})
+
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
 app.use("/", indexRoutes);
