@@ -36,8 +36,38 @@ router.post("/signup", async (req,res,next)=>{
     });
     return; 
     }
+    
+    try{
 
+        const foundUser = await User.findOne({ username: username });
+        
+        if (foundUser !== null) {
+          res.render("auth/signup.hbs", {
+        errorMessage: "Username not available",
+        });
+        return;
+        }
 
+        const foundMail = await User.findOne({ email: email });
+        if (foundMail !== null) {
+        res.render("auth/signup.hbs", {
+        errorMessage: "Registered email ",
+         });return;
+        } 
+
+        let newUser ={
+            username : username,
+            email : email,
+            password : password,
+            age : age,
+            city : city,
+        }
+
+        await User.create(newUser)
+        res.redirect("/") //! redirigir a middle screen - listado de restaurantes
+    }catch(err){
+        next(err)
+    }
 
 })
 
