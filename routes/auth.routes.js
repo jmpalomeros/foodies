@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const User = require("../models/User.model")
+const bcrypt = require("bcryptjs")
 
 //SIGN UP ROUTE
-
+// GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
 router.get("/signup", (req,res,next)=>{
     res.render("auth/signup.hbs");
     
 })
 
+// POST "/auth/signup" => PARA CREAR USUARIO EN LA BASE DE DATOS
 router.post("/signup", async (req,res,next)=>{
-    const{username, email, password, age, city} = req.body
+    const{username, email, password, age, city, image} = req.body
 
     console.log(req.body)
     
@@ -55,12 +57,16 @@ router.post("/signup", async (req,res,next)=>{
          });return;
         } 
 
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(password, salt);
+
         let newUser ={
             username : username,
             email : email,
-            password : password,
+            password : hashPassword,
             age : age,
             city : city,
+            image: image,
         }
 
         await User.create(newUser)
@@ -71,6 +77,55 @@ router.post("/signup", async (req,res,next)=>{
 
 })
 
+// GET "/auth/login" => RENDERIZA FORMULARIO DE ACCESO
+router.get("/login", (req, res, next) => {
+    res.render("auth/login.hbs");
+});
+
+// POST "/auth/login" => PARA VALIDAR LOS DATOS DEL USUARIO EN LA BS
+router.post("/login", async (req, res, next) => {
+    const { username, password  } = req.body;
+    console.log(req.body);
+// Validamos campos completos en backend
+  if (username === "" || password === "") {
+    res.render("auth/login.hbs", {
+        errorMessage: "Fields incomplete"
+    })
+    return;
+  }
+ 
+  try {
+    const foundUser = await User.findOne({username: username});
+    if(foundUser === null) {
+        res.render("auth/login.hbs", {
+            errorMessage: "Wrong data"
+        });
+return;
+    }
+
+    const passwordValid = await bcrypt.compare(password, foundUser.password);
+    console.log("es valido", passwordValid)
+    if (passwordValid === false) {
+        res.render("auth/login.hbs", {
+            errorMessage: "Wrong data"
+        });
+        return;
+    }
+
+   res.redirect("/");
+  } catch(error) {
+    next(error)
+  }
+
+});
+
+// GET ("/auth/logout") => ruta para deslogar
+router.get("/logout", (req, res, next) => {
+    req.session.destroy(() => {
+        res.render("auth/logout.hbs")
+        res.redirect("/");
+    });
+});
 
 
 

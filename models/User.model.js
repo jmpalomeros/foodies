@@ -36,8 +36,12 @@ const userSchema = new Schema(
       type: String,
       enum: ["user", "admin"],
       default: "user"
-    }
+    },
+    image: {
+      type: String,
+      required: false  
   },
+},
   {
     //este segundo objeto ofrece listado de users con detalle de cuando se crearon y actualizaron
     timestamps: true} 
