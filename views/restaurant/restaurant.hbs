@@ -1,19 +1,19 @@
-
 <div>
 
-<h3>Restaurants</h3>
-<ul>
-<a href="">Restaurant</a>
-<br>
-<a href="">Restaurant </a>
-<br>
-<a href="">Restaurant</a>
-</ul>
-<br>
+  <h3>Restaurants</h3>
 
-<a href="/profile"> <button>My profile</button> </a>
+  {{#each restaurantList}}
+    <ul>
+      <a href="/restaurant/{{_id}}">{{name}}</a>
+    </ul>
+  {{/each}}
 
-<br>
-<a href="/"><button>Log out</button></a>
+  <br />
+
+  <a href="/profile"> <button>My profile</button> </a>
+  <br />
+  <a href="/restaurant/create"><button>Add new restaurant</button></a>
+  <br />
+  <a href="/"><button>Log out</button></a>
 
 </div>

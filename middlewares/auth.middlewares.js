@@ -7,6 +7,14 @@ const isLogged = (req,res,next)=>{
     }
 }
 
+const admin = (req, res, next) => {
+    if ( req.session.loggedUser.role !== "admin") {
+        res.redirect("/restaurant")
+    }
+}
+
+
 module.exports = {
-    isLogged
+    isLogged,
+    admin
 }

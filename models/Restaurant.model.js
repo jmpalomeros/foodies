@@ -9,12 +9,23 @@ const restaurantSchema = new Schema(
         trim: true,
         lowercase: true
     },
-    location: String,
+    location: {
+        type: String,
+        required: true
+    },
     style:{
         type:String,
-        enum: ["italiana", "americana", "japonesa", "china", "india", "peruana", "venezolana"]
+        enum: ["italiana", "americana", "japonesa", "china", "india", "peruana", "venezolana"], 
+        required: true,
+        lowercase: true
     } ,
-    mainDish: String
+    mainDish: {
+        type: String 
+    }, 
+    image: {
+        type: String,
+        required: false  
+    },
 },
 {
     timestamps:true
