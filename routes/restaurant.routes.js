@@ -3,6 +3,8 @@ const router = express.Router();
 const Restaurant = require("../models/Restaurant.model.js");
 const { isLogged, admin } = require("../middlewares/auth.middlewares");
 
+//CREATE
+
 //GET "restaurant/create"=> para visualizar formulario de registro de restaurante
 //ADMIN
 router.get("/create", isLogged, (req, res, next) => {
@@ -29,6 +31,8 @@ router.post("/create", isLogged, async (req, res, next) => {
   }
 });
 
+//READ
+
 // GET Ruta de usuario para visualizar lista de restaurantes
 router.get("/", isLogged, async (req, res, next) => {
   try {
@@ -54,12 +58,51 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
+/*
+//UPDATE RESTAURANT
+
+//GET "/restaurant/:id/edit" => randeriza formulario para editar datos resturante
+
+router.get("/:id/edit", isLogged, async(req,res,next)=>{
+  const{id}= req.params
+  try{
+    const editedRest = await Restaurant.findById()
+  res.render("restaurant/edited.hbs",{
+    editedRest
+  })
+  } catch(err){
+    next(err)
+  }
+  })
+
+  //POST "restaurant/:id/edit"=> recibe los valores actualizados y redirecciona a middle screen
+
+  router.post("/restaurant/:id/edit", isLogged, async(req, res, next)=>{
+    const{id} =req.params;
+    const{name, location, style, mainDish} = req.body;
+
+    let restaurantEdited = {
+      name,
+      location,
+      style,
+      mainDish,
+    }
+    try{
+      await Restaurant.findByIdAndUpdate(id,restaurantEdited)
+      res.redirect("/restaurant") 
+    } catch(err){
+      next(err)
+    }
+  })
+
+*/
+
 // GET ("/auth/logout") => ruta para deslogar
-/*router.get("/logout", (req, res, next) => {
+router.get("/logout", (req, res, next) => {
     req.session.destroy(() => {
     
      res.redirect("/");
     });
-  });*/
+  });
 
 module.exports = router;

@@ -1,0 +1,30 @@
+<div>
+
+<h4>Upload Restaurant data</h4>
+
+<form action="/books/{{editedRest._id}}/edit" method="POST"> 
+
+<label for="name" >Name</label>
+<input type="text" name="name" value="{{editedRest.name}}">
+<br>
+<label for="location" >Location</label>
+<input type="text" name="location" value="{{editedRest.location}}">
+<br>
+<label for="style" >Style</label>
+<input type="text" name="style" value="{{editedRest.style}}">
+<br>
+<label for="mainDish" >Main dish</label>
+<input type="text" name="mainDish" value="{{editedRest.mainDish}}">
+<br>
+
+<button type="image">Upload Image</button>
+
+<p style="color: red ">{{errorMessage}}</p>
+
+<button>Upload</button>
+
+
+
+  </form>
+
+</div>

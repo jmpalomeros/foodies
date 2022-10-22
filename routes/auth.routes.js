@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 
+
 //SIGN UP ROUTE
 // GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
 router.get("/signup", (req, res, next) => {
@@ -124,13 +125,13 @@ router.post("/login", async (req, res, next) => {
 
 // GET ("/auth/logout") => ruta para deslogar
 router.get("/logout", (req, res, next) => {
-  setTimeout(()=>{
+  /*setTimeout(()=>{
     res.render("auth/logout.hbs")
-  }, 5000)
-  /*req.session.destroy(() => {
+  }, 5000)*/
+  req.session.destroy(() => {
     
     res.redirect("/");
-  });*/
+  });
 });
 
 module.exports = router;
