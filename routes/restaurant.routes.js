@@ -16,6 +16,7 @@ router.get("/",(req,res,next)=>{
 // GET ("/auth/logout") => ruta para deslogar
 router.get("/logout", (req, res, next) => {
     req.session.destroy(() => {
+    
      res.redirect("/");
     });
   });

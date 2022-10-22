@@ -10,7 +10,10 @@ const restaurantSchema = new Schema(
         lowercase: true
     },
     location: String,
-    stile: String,
+    style:{
+        type:String,
+        enum: ["italiana", "americana", "japonesa", "china", "india", "peruana", "venezolana"]
+    } ,
     mainDish: String
 },
 {

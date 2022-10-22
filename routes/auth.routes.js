@@ -10,6 +10,7 @@ router.get("/signup", (req, res, next) => {
 });
 
 // POST "/auth/signup" => PARA CREAR USUARIO EN LA BASE DE DATOS
+
 router.post("/signup", async (req, res, next) => {
   const { username, email, password, age, city, image } = req.body;
 
@@ -76,11 +77,13 @@ router.post("/signup", async (req, res, next) => {
 });
 
 // GET "/auth/login" => RENDERIZA FORMULARIO DE ACCESO
+
 router.get("/login", (req, res, next) => {
   res.render("auth/login.hbs");
 });
 
 // POST "/auth/login" => PARA VALIDAR LOS DATOS DEL USUARIO EN LA BS
+
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
   console.log(req.body);
