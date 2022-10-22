@@ -5,7 +5,7 @@ const{isLogged}=require("../middlewares/auth.middlewares")
 
 //GET "/restaurant"=> muestra la middle screen
 
-router.get("/",(req,res,next)=>{
+router.get("/", isLogged,(req,res,next)=>{
     res.render("restaurant/restaurant.hbs")
 })
 

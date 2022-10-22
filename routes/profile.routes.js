@@ -4,18 +4,22 @@ const User = require("../models/User.model.js");
 const { isLogged } = require("../middlewares/auth.middlewares");
 
 //GET "/profile"=> ruta donde el usuario puede ver su perfil
-router.get("/", isLogged, (req, res, next) => {
-    console.log("usuario activo", req.session.loggedUser)
-    User.findeById(req.session.loggedUser._id)
-    .then((response)=>{
+router.get("/", isLogged, async (req, res, next) => {
+
+    try{ 
+        console.log("usuario activo", req.session.loggedUser)
+        const activeSession = await User.findById(req.session.loggedUser._id)
         res.render("profile/my-profile.hbs",{
-          userDetails :response  
+        activeSession
         })
         
-    })
-    .catch((err)=>{
+    }catch(err){
         next(err)
-    })
+    }
+
+
+   
+    
     
   
 });

@@ -113,7 +113,7 @@ router.post("/login", async (req, res, next) => {
       return;
     }
     //creación de la sesion activa
-    req.session.logeddUser = foundUser;
+    req.session.loggedUser = foundUser;
     req.session.save(() => {
       res.redirect("/restaurant");
     });

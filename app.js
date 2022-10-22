@@ -26,7 +26,7 @@ app.locals.appTitle = `${capitalize(projectName)}`;
 
 // Ejecuciones de middleware para variables locales
 app.use((req, res, next) => {
-    if(req.session.logeddUser === undefined) {
+    if(req.session.loggedUser === undefined) {
         res.locals.isUserActive = false
     } else {
         res.locals.isUserActive = true
