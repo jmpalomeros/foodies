@@ -1,0 +1,32 @@
+<div>
+
+    <h2>Edit your profile</h2>
+
+    <form action="/profile/{{editedProfile._id}}/edit" method="POST">
+
+        <label for="username">Username: </label>
+        <input type="text" name="username" value="{{editedProfile.username}}">
+        <br>
+        <label for="email">E-amil: </label>
+        <input type="text" name="email" value="{{editedProfile.email}}">
+        <br>
+        <label for="password">Password: </label>
+        <input type="password" name="password" value="{{editedProfile.password}}">
+        <br>
+        <label for="age">Age: </label>
+        <input type="text" name="age" value="{{editedProfile.age}}">
+        <br>
+        <label for="city">City: </label>
+        <input type="text" name="city" value="{{editedProfile.city}}">
+        <br>
+        <button type="image"name="image" value="{{editedProfile.image}}">Upload new image</button>
+        
+        <br>
+
+    <button>Save changes</button>
+
+    </form>
+
+
+
+</div>

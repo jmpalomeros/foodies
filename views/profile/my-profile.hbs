@@ -2,17 +2,29 @@
 
 <h2>Welcome fulanito</h2>
 
-{{activeSession.username}}
+{{#with activeSession}}
+
+{{username}}
 <br>
-{{activeSession.email}}
+{{email}}
 <br>
-{{activeSession.city}}
+{{city}}
 <br>
-{{activeSession.age}}
+{{age}}
 <br>
-{{activeSession.image}}
+{{image}}
+
+{{/with}}
 
 
+<a href="/profile/{{activeSession._id}}/edit"><button>Edit your profile</button></a>
+<br>
+<p>FALTA EL BOTON PARA BORRAR PERFIL. RUTA CREADA PERO HAY QUE DEFINIR COMO BORRAMOS</p>
+<a href="/ratings"><button>Your ratings</button></a>
+<br>
+<a href="/new-rating"><button>New rating</button></a>
+
+<br>
 <a href="/restaurant"><button>Go to restaurant</button></a>
 
 </div>

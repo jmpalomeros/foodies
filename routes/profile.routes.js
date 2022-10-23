@@ -16,4 +16,59 @@ router.get("/", isLogged, async (req, res, next) => {
   }
 });
 
+//RUTAS PARA EDITAR PERFIL
+
+//GET "profile/:id/edit"=> renderiza el formulario para editar los datos actuales del perfil
+router.get("/:id/edit", isLogged, async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const editedProfile = await User.findById(id);
+    res.render("profile/edit-profile.hbs", {
+      editedProfile
+    });
+    console.log("perfil a editar", editedProfile)
+  } catch (err) {
+    next(err);
+  }
+});
+
+//POST "profile/:id/edit"=> recibe los datos editados y los actualiza
+router.post("/:id/edit", isLogged, async (req,res,next)=>{
+
+  const{id}=req.params;
+  const{username, password, email, age, city, image} = req.body;
+
+  let uploadProfile = {
+    username,
+    password,
+    email,
+    age,
+    city,
+    image,
+  }
+  try{
+
+    const profileUploaded = await User.findByIdAndUpdate(id, uploadProfile)
+    console.log("perfil actualizado", uploadProfile)
+    res.redirect("/profile")
+
+  }catch(err){
+    next(err)
+  }
+})
+
+//RUTA PARA ELIMINAR EL PERFIL
+
+router.post("/:id/delete", isLogged, async(req,res,next)=>{
+  try{
+    await User.findByIdAndDelete(req.params.id)
+    res.redirect("/logout")
+  }catch(err){
+    next(err)
+  }
+
+  
+
+})
+
 module.exports = router;
