@@ -61,7 +61,10 @@ router.post("/:id/delete", isLogged, async (req, res, next) => {
   try {
     await User.findByIdAndDelete(id);
     console.log("perfil borrado", id);
-    res.redirect("/");
+    req.session.destroy(() => {
+      res.redirect("/");
+    });
+    
   } catch (err) {
     next(err);
   }
