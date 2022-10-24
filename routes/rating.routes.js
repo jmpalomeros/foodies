@@ -26,13 +26,14 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 });
 
 //POST "/rating/new-rating" => ruta para añadir la valoracion
-router.post("/create", isLogged, async (req, res, next) => {
-    const {id}=req.params
-    const { restaurant, user, number, recomendedDish } = req.body;
-console.log(req.body)
-  let newRating = {
+router.post("/:id/new-rating", isLogged, async (req, res, next) => {
+    const { id } = req.params;
+    const { restaurant, user, rating, recomendedDish } = req.body;
+    console.log(req.body)
+    console.log(req.session.loggedUser._id)
+    let newRating = {
     restaurant,
-    number,
+    user,
     rating,
     recomendedDish,
   };
