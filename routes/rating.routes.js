@@ -6,6 +6,7 @@ const Restaurant = require("../models/Restaurant.model");
 const Rating = require("../models/Rating.model");
 const numbers = [1,2,3,4,5,6,7,8,9,10]
 
+
 //RUTA CREATE
 
 //GET "/rating/new-rating" => ruta que renderiza formulario para crear valoracion
@@ -14,8 +15,9 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
   const { id } = req.params;
   try {
     const restaurantToRate = await Restaurant.findById(id);
+   
     //.populate("name")
-    // const newRatingUserModel = await User.findById(req.session.loggedUser._id)
+    
     //console.log("usuario logado",req.session.loggedUser._id)
     res.render("rating/new-rating.hbs", {
       restaurantToRate, numbers
@@ -27,15 +29,16 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 
 //POST "/rating/new-rating" => ruta para añadir la valoracion
 router.post("/:id/new-rating", isLogged, async (req, res, next) => {
-    const { id } = req.params;
-    const { restaurant, user, rating, recomendedDish } = req.body;
+    const { id } = req.params; //es del restaurante
+    const { restaurant, user, rating, recomendedDish, alergias } = req.body;
     console.log(req.body)
-    console.log(req.session.loggedUser._id)
+    console.log("el id del usuario:",req.session.loggedUser._id)
     let newRating = {
     restaurant,
     user,
     rating,
     recomendedDish,
+    alergias,
   };
   try {
     await Rating.create(newRating);

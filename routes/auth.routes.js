@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
-const { isLogged } = require("../middlewares/auth.middlewares");
+//const { isLogged } = require("../middlewares/auth.middlewares");
 
 //SIGN UP ROUTE
 // GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
