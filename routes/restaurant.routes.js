@@ -101,9 +101,19 @@ res.redirect("/restaurant");
 });
 
 
-
-
 //RUTA PARA DELETE RESTAURANT
+//POST "/restaurant/:id/delete" ruta para eliminar restaurant de la BD
+router.post("/:id/delete", isLogged, async (req, res, next) => {
+  let {id} = req.params;
+
+  try {
+    await Restaurant.findByIdAndDelete(id)
+    res.redirect("/restaurant")
+
+  }catch(error) {
+    next(error)
+  }
+})
 
 
 
