@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/Restaurant.model.js");
-const { isLogged} = require("../middlewares/auth.middlewares");
+const {isLogged} = require("../middlewares/auth.middlewares");
+
+// RUTAS PARA CREATE RESTAURANT
 
 //GET "restaurant/create"=> para visualizar formulario de registro de restaurante
-//ADMIN
+
 router.get("/create", isLogged, (req, res, next) => {
   res.render("restaurant/create.hbs");
 });
@@ -28,6 +30,8 @@ router.post("/create", isLogged, async (req, res, next) => {
     next(error);
   }
 });
+
+//RUTAS PARA READ RESTAURANT LIST
 
 // GET Ruta de usuario para visualizar lista de restaurantes
 router.get("/", isLogged, async (req, res, next) => {
@@ -53,6 +57,14 @@ router.get("/:id", isLogged, async (req, res, next) => {
     next(error);
   }
 });
+
+//RUTAS PARA EDIT RESTAURANT
+
+
+
+//RUTA PARA DELETE RESTAURANT
+
+
 
 // GET ("/auth/logout") => ruta para deslogar
 /*router.get("/logout", (req, res, next) => {
