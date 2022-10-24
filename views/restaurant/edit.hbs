@@ -1,0 +1,39 @@
+<div>
+
+<h3>Edit restaurant</h3>
+
+<form action="/restaurant/{{details._id}}/edit" method="POST">
+
+
+
+<label for="name" >Name</label>
+<input type="text" name="name" value="{{editRestaurant.name}}" >
+<br>
+<label for="location" >Location</label>
+<input type="text" name="location" value="{{editRestaurant.location}}">
+<br>
+<label for="style" >Style</label>
+{{!-- <input type="text" name="style" value="{{styleList}}"> --}}
+<select name="style" >
+    <option value="">Choose a style</option>
+    {{#each styleList}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+</select>
+<br>
+<label for="mainDish" >Main dish</label>
+<input type="text" name="mainDish" value="{{editRestaurant.mainDish}}">
+<br>
+
+<button type="image" value="{{editRestaurant.image}}">Upload Image</button>
+
+<p style="color: red ">{{errorMessage}}</p>
+
+<button>Upload</button>
+
+
+</form>
+
+
+
+</div>

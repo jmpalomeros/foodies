@@ -1,4 +1,5 @@
 const {Schema, model} = require("mongoose");
+const styleList = require("../utils/styleList.js")
 
 const restaurantSchema = new Schema(
     {
@@ -15,7 +16,7 @@ const restaurantSchema = new Schema(
     },
     style:{
         type:String,
-        enum: ["italiana", "americana", "japonesa", "china", "india", "peruana", "venezolana"], 
+        enum: [String], styleList, 
         required: true,
         lowercase: true
     } ,

@@ -15,7 +15,13 @@
 <input type="text" name="location">
 <br>
 <label for="style" >Style</label>
-<input type="text" name="style">
+{{!-- <input type="text" name="style" value="{{newRest.style}}"> --}}
+<select name="style" >
+    <option value="">Choose a style</option>
+    {{#each styleList}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+</select>
 <br>
 <label for="mainDish" >Main dish</label>
 <input type="text" name="mainDish">

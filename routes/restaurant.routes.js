@@ -2,13 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/Restaurant.model.js");
 const {isLogged} = require("../middlewares/auth.middlewares");
+const styleList = require("../utils/styleList");
 
 // RUTAS PARA CREATE RESTAURANT
 
 //GET "restaurant/create"=> para visualizar formulario de registro de restaurante
 
 router.get("/create", isLogged, (req, res, next) => {
-  res.render("restaurant/create.hbs");
+
+
+  res.render("restaurant/create.hbs", {styleList});
+
 });
 
 //POST "restaurant/create" => para enviar formulario a la BD
@@ -59,10 +63,48 @@ router.get("/:id", isLogged, async (req, res, next) => {
 });
 
 //RUTAS PARA EDIT RESTAURANT
+// GET "/restaurant/:id/edit" Ruta para mostrar detalles a editar del restaurante.
+router.get("/:id/edit", isLogged, async (req, res, next) => {
+  const { id } = req.params;
+
+  try {
+    const editRestaurant = await Restaurant.findById(id);
+    res.render("restaurant/edit.hbs", {
+      editRestaurant, styleList
+    })
+  } catch (error) {
+    next(error);
+  }
+})
+
+//POST "/restaurant/:id/edit" Ruta para traer desde la BD los campos a editar y actualizar
+router.post("/:id/edit", isLogged, async (req, res, next) => {
+ const {id} = req.params;
+ const {name, location, style, mainDish, image} = req.body;
+
+let restaurantEdited = {
+  name,
+  location, 
+  style, 
+  mainDish,
+  image,
+}
+
+ try {
+const restaurantUpload = await Restaurant.findByIdAndUpdate(id, restaurantEdited);
+console.log("Restaurant Editado", restaurantEdited)
+res.redirect("/restaurant");
+ }catch(error) {
+  next(error)
+ }
+
+});
+
 
 
 
 //RUTA PARA DELETE RESTAURANT
+
 
 
 
