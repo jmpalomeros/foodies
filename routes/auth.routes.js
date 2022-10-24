@@ -126,8 +126,8 @@ router.post("/login", async (req, res, next) => {
 // GET ("/auth/logout") => ruta para deslogar
 router.get("/logout", (req, res, next) => {
   req.session.destroy(() => {
-    res.render("auth/logout.hbs");
-    //res.redirect("/");
+    //res.render("auth/logout.hbs");
+    res.redirect("/");
   });
 });
 
