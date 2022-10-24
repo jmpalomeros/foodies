@@ -1,0 +1,29 @@
+<div>
+
+
+
+
+<p>Your rating:</p>
+
+<form action="/rating/create" method="POST">
+
+<h3>{{restaurantToRate.name}}</h3>
+
+<select name="rating">
+<option value="">Choose your rating</option>
+
+{{#each numbers}}
+<option value="">{{this}}</option>
+{{/each}}
+</select>
+<br>
+
+<label for="name">Recomend dish </label>
+<input type="text" name="name">
+
+<button>Save</button>
+</form>
+
+
+
+</div>

@@ -69,7 +69,7 @@ router.get("/:id/edit", isLogged, async (req, res, next) => {
 
   try {
     const editRestaurant = await Restaurant.findById(id);
-    res.render("restaurant/edit.hbs", {
+      res.render("restaurant/edit.hbs", {
       editRestaurant, styleList
     })
   } catch (error) {
@@ -91,7 +91,7 @@ let restaurantEdited = {
 }
 
  try {
-const restaurantUpload = await Restaurant.findByIdAndUpdate(id, restaurantEdited);
+await Restaurant.findByIdAndUpdate(id, restaurantEdited);
 console.log("Restaurant Editado", restaurantEdited)
 res.redirect("/restaurant");
  }catch(error) {

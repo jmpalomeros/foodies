@@ -9,8 +9,15 @@ const ratingSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     },
-    enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    recommendedDish: String
+    rating: {
+        type:Number,
+        enum: [1,2,3,4,5,6,7,8,9,10],
+        required: true,
+    },
+    recommendedDish: {
+        type: String,
+        required: true
+    }
 })
 
 const Rating = mongoose.model("Rating", ratingSchema)
