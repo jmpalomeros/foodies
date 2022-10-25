@@ -85,10 +85,10 @@ router.get("/my-ratings", isLogged, async (req, res, next) => {
 
 //RUTA DELETE RATING
 //POST "/rating/my-ratings/delete"=>ruta para eliminar una valoracion
-router.post("/my-ratings/delete", isLogged, async(req,res,next)=>{
-  
+router.post("/:id/my-ratings/delete", isLogged, async(req,res,next)=>{
+  const{id} = req.params
   try{
-    await Rating.findByIdAndDelete({user: req.session.loggedUser})
+    await Rating.findByIdAndDelete(id)
     res.redirect("/rating/my-ratings")
 
   }catch(err){
