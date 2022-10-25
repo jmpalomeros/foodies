@@ -7,7 +7,8 @@
     {{/each}}
     <p>Rating: {{this.rating}}</p>
     <p>Commentary: {{this.commentary}}</p>
-    <a href="/rating/my-ratings/edit"><button>Edit</button></a>
+    
+    <a href="/rating/{{this._id}}/my-ratings/edit"><button>Edit</button></a>
     <br>
     <form action="/rating/{{this._id}}/my-ratings/delete" method="POST"><button>Delete</button></form>
     

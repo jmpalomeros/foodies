@@ -1,34 +1,19 @@
 <div>
-
-
-
-
 <h2>Your rating:</h2>
-
 <form action="/rating/{{restaurantToRate._id}}/new-rating" method="POST">
-
-<h3>{{restaurantToRate.name}}</h3>
-
-
-
-<select name="rating">
-<option value="">Choose your rating</option>
-
-{{#each numbers}}
-<option value="{{this}}">{{this}}</option>
-{{/each}}
-</select>
-<br>
-
-<label for="recomendedDish">Recomended dish </label>
-<input type="text" name="recomendedDish">
-<br>
-<label for="commentary">Commentary </label>
-<input type="text" name="commentary">
-
-<button>Save</button>
+    <h3>{{restaurantToRate.name}}</h3>
+    <select name="rating">
+    <option value="">Choose your rating</option>
+    {{#each numbers}}
+    <option value="{{this}}">{{this}}</option>
+    {{/each}}
+    </select>
+    <br>
+    <label for="recomendedDish">Recomended dish </label>
+    <input type="text" name="recomendedDish">
+    <br>
+    <label for="commentary">Commentary </label>
+    <input type="text" name="commentary">
+    <button>Save</button>
 </form>
-
-
-
 </div>
