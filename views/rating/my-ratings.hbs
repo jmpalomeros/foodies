@@ -1,4 +1,15 @@
 <div>
-    <p>mis valoraciones</p>
-    <p>{{myRating._id}}</p>
+    <h2>My ratings</h2>
+    {{#each myRating}}
+
+    {{#each this.restaurant}}
+    <h3> {{this.name}}</h3>
+    {{/each}}
+    <p>Rating: {{this.rating}}</p>
+    <p>Commentary: {{this.commentary}}</p>
+    <a href="/rating/my-ratings/edit"><button>Edit</button></a>
+    <br>
+    <form action="/rating/my-ratings/delete" method="POST"><button>Delete</button></form>
+    
+    {{/each}}
 </div>

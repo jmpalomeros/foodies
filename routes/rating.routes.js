@@ -41,31 +41,13 @@ router.post("/:id/new-rating", isLogged, async (req, res, next) => {
   };
   try {
     await Rating.create(newRating);
-    res.redirect("/rating/ratings");
+    res.redirect("/restaurant");
   } catch (err) {
     next(err);
   }
 });
 
 //RUTA READ
-
-//GET "/rating/rantings" => renderiza las valoraciones hechas por los usuarios
-
-router.get("/ratings", isLogged, async (req, res, next)=>{
-  // const {id} = req.params;
-    try{
-      const restaurantRatingList =await Rating.find()
-      // console.log("este es el id que estamos pasando")
-      .populate("restaurant")
-      .populate("user")
-      res.render("rating/ratings.hbs",{
-      restaurantRatingList
-    })
-    
-    }catch(err){
-      next(err)
-  }
-})
 
 //GET "/rating/:id/ratings" => renderizar todas las valoraciones de un mismo restaurante
 router.get("/:id/ratings", isLogged, async (req, res, next)=>{
@@ -86,9 +68,9 @@ router.get("/:id/ratings", isLogged, async (req, res, next)=>{
 
 //GET "/rating/my-ratings" => renderiza todas las opiniones del usuario logeado
 router.get("/my-ratings", isLogged, async (req, res, next) => {
-  // const {id} = req.params;
+  
   try {
-   const myRating = await Rating.findById(req.session.loggedUser._id)
+   const myRating = await Rating.find({user: req.session.loggedUser._id})
    .populate("restaurant")
   //  console.log(myRating)
    res.render("rating/my-ratings.hbs", {
@@ -101,6 +83,17 @@ router.get("/my-ratings", isLogged, async (req, res, next) => {
 })
 
 
+//RUTA DELETE RATING
+//POST "/rating/my-ratings/delete"=>ruta para eliminar una valoracion
+router.post("/my-ratings/delete", isLogged, async(req,res,next)=>{
+  
+  try{
+    await Rating.findByIdAndDelete({user: req.session.loggedUser})
+    res.redirect("/rating/my-ratings")
 
+  }catch(err){
+    next(err)
+  }
+})
 
 module.exports = router;

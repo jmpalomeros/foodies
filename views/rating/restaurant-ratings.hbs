@@ -1,13 +1,15 @@
 <div>
-    <h3>lo que quiera</h3>
-{{#each restaurantRating}}
 
-{{#each this.user}}
+  <h2>User´s opinion</h2>
+
+  {{#each restaurantRating}}
+    
+    {{#each this.user}}
 <h4>{{this.username}}</h4>
 {{/each}}
-<p>{{this.rating}}</p>
-<p>{{this.recomendedDish}}</p>
-<p>{{this.commentary}}</p>
-{{/each}}
+    <p>{{this.rating}}</p>
+    <p>{{this.recomendedDish}}</p>
+    <p>{{this.commentary}}</p>
+  {{/each}}
 
 </div>
