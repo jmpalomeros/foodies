@@ -18,7 +18,7 @@ const ratingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    alergias: String
+    commentary: String
 })
 
 const Rating = mongoose.model("Rating", ratingSchema)
