@@ -14,11 +14,11 @@ const numbers = [1,2,3,4,5,6,7,8,9,10]
 router.get("/:id/new-rating", isLogged, async (req, res, next) => {
   const { id } = req.params;
   try {
-    const restaurantToRate = await Restaurant.findById(id);
+    const restaurantToRate = await Restaurant.findById(id).select("name");
    
     //.populate("name")
     
-    //console.log("usuario logado",req.session.loggedUser._id)
+    console.log(restaurantToRate)
     res.render("rating/new-rating.hbs", {
       restaurantToRate, numbers
     });
