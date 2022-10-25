@@ -14,9 +14,8 @@ const numbers = [1,2,3,4,5,6,7,8,9,10]
 router.get("/:id/new-rating", isLogged, async (req, res, next) => {
   const { id } = req.params;
   try {
-    const restaurantToRate = await Restaurant.findById(id).select("name");
-   
-    //.populate("name")
+    const restaurantToRate = await Restaurant.findById(id).select("name")
+    //.populate("username")
     
     console.log(restaurantToRate)
     res.render("rating/new-rating.hbs", {
@@ -30,19 +29,19 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 //POST "/rating/new-rating" => ruta para añadir la valoracion
 router.post("/:id/new-rating", isLogged, async (req, res, next) => {
     const { id } = req.params; //es del restaurante
-    const { restaurant, user, rating, recomendedDish, alergias } = req.body;
+    const {rating, recomendedDish, alergias } = req.body;
     console.log(req.body)
     console.log("el id del usuario:",req.session.loggedUser._id)
     let newRating = {
-    restaurant,
-    user,
+    restaurant: id,
+    user: req.session.loggedUser._id,
     rating,
     recomendedDish,
     alergias,
   };
   try {
     await Rating.create(newRating);
-    res.redirect("/profile");
+    res.redirect("/rating/ratings");
   } catch (err) {
     next(err);
   }
@@ -50,16 +49,19 @@ router.post("/:id/new-rating", isLogged, async (req, res, next) => {
 
 //RUTA READ
 
-//GET "/rating/my-rantings" => renderiza las valoraciones hechas por el usuario
+//GET "/rating/rantings" => renderiza las valoraciones hechas por el usuario
 
-// router.get("/my-ratings", isLogged, async (req, res, next)=>{
-//     try{
-//         const myRatings = await User.find()
-
-//     }catch(err){
-//         next(err)
-//     }
-//     res.render
-// })
+router.get("/ratings", isLogged, async (req, res, next)=>{
+    try{
+      const ratingList =await Rating.find()
+      .populate("restaurant")
+      res.render("rating/ratings.hbs",{
+      ratingList
+    })
+    
+    }catch(err){
+      next(err)
+  }
+})
 
 module.exports = router;

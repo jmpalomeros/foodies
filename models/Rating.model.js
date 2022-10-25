@@ -5,10 +5,10 @@ const ratingSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Restaurant"
     }],
-    user: [{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
-    }],
+    },
     rating: {
         type:Number,
         enum: [1,2,3,4,5,6,7,8,9,10],
