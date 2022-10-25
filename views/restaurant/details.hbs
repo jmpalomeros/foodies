@@ -14,8 +14,11 @@
 <br>
 <a href="/rating/{{details._id}}/ratings"><button>View ratings</button></a>
 <br>
+{{#if powers}}
 <a href="/restaurant/{{details._id}}/edit"><button>Edit restaurant</button></a>
 <form action="/restaurant/{{details._id}}/delete" method="POST"><button>Delete restaurant</button></form>
+{{/if}}
+
 <a href="/restaurant"><button>Go back to list</button></a>
 
 </div>

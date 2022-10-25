@@ -71,7 +71,7 @@ router.post("/signup", async (req, res, next) => {
     };
 
     await User.create(newUser);
-    res.redirect("/restaurant"); //! redirigir a middle screen - listado de restaurantes
+    res.redirect("/restaurant"); 
   } catch (err) {
     next(err);
   }
