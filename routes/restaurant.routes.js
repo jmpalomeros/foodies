@@ -37,24 +37,9 @@ router.post("/create", isLogged, admin, async (req, res, next) => {
 // GET Ruta de usuario para visualizar lista de restaurantes
 router.get("/", isLogged, async (req, res, next) => {
 
-  // const{restaurantName} = req.query
-
-  // if(restaurantName === undefined){
-  //   res.render("/restaurant/restaurant.hbs")
-  // }else{
-  //   try{
-  //     await Restaurant.findOne({name : restaurantName});
-  //     res.render("restaurant/restaurant")
-  //   } catch(err){
-  //     next(err)
-  //   }
-    
-  // }
-
-
-
   try {
-    const restaurantList = await Restaurant.find();
+
+     const restaurantList = await Restaurant.find();
     res.render("restaurant/restaurant.hbs", {
       restaurantList,
     });
