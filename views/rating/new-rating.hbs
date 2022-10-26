@@ -1,12 +1,19 @@
 <div>
 <h2>Your rating:</h2>
-<form action="/rating/{{restaurantToRate._id}}/new-rating" method="POST">
+
 
 
 <h3>{{restaurantToRate.name}}</h3>
 
+{{#if foundRating}}
+
+<br>
+<p style="color: red ">{{errorMessage}}</p>
 
 
+{{else}}
+
+<form action="/rating/{{restaurantToRate._id}}/new-rating" method="POST">
 <select name="rating">
 <option value="">Choose your rating</option>
 
@@ -23,11 +30,9 @@
 <input type="text" name="commentary">
 
 <button>Save</button>
-<br>
-<p style="color: red ">{{errorMessage}}</p>
-
 
 </form>
+{{/if}}
 
 <a href="/restaurant"><button>Go back</button></a>
 

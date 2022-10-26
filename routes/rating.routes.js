@@ -16,12 +16,12 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 
     const foundRating = await Rating.findOne({user: req.session.loggedUser._id, restaurant: id})
     console.log("quiero saber que se pasa aqui", foundRating)
-    if (foundRating !== null) {
-      res.render("rating/new-rating.hbs", {
-        errorMessage: "Ya has valorado este restaurante"
-      })
-      return;
-    }
+    // if (foundRating !== null) {
+    //   res.render("rating/new-rating.hbs", {
+    //     errorMessage: "Ya has valorado este restaurante"
+    //   })
+    //   return;
+    // }
 
     const restaurantToRate = await Restaurant.findById(id).select("name");
     //.populate("username")
@@ -30,6 +30,8 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
     res.render("rating/new-rating.hbs", {
       restaurantToRate,
       numbers,
+      foundRating,
+      errorMessage: "Ya has valorado este restaurante",
     });
   } catch (err) {
     next(err);
@@ -81,15 +83,15 @@ router.post("/:id/new-rating", isLogged, async (req, res, next) => {
 // //   };
 // // // >>>>>>> dde489940631360377ed1b4213ad51d65cde75a9
 
-// if (rating === "" || recomendedDish === "" || commentary === "") {
-//   const restaurantToRate = await Restaurant.findById(id).select("name");
-//   res.render("rating/new-rating.hbs", {
-//     restaurantToRate,
-//       numbers,  
-//       errorMessage: "Must complete: rating, recomended dish & commentary",
-//   });
-//   return;
-// }
+if (rating === "" || recomendedDish === "" || commentary === "") {
+  const restaurantToRate = await Restaurant.findById(id).select("name");
+  res.render("rating/new-rating.hbs", {
+    restaurantToRate,
+      numbers,  
+      errorMessage: "Must complete: rating, recomended dish & commentary",
+  });
+  return;
+}
   try {
 
     // const foundUser = await Rating.findOne({user: req.session.loggedUser._id, restaurant: id})
