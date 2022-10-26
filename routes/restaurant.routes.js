@@ -36,10 +36,8 @@ router.post("/create", isLogged, admin, async (req, res, next) => {
 
 // GET Ruta de usuario para visualizar lista de restaurantes
 router.get("/", isLogged, async (req, res, next) => {
-
   try {
-
-     const restaurantList = await Restaurant.find();
+    const restaurantList = await Restaurant.find();
     res.render("restaurant/restaurant.hbs", {
       restaurantList,
     });
@@ -64,9 +62,24 @@ router.get("/:id", isLogged, async (req, res, next) => {
 //RUTA DEL BUSCADOR DE RESTAURANT
 //GET "/restaurant" ruta para randerizar un buscador de restaurantes
 
-
-
-
+// router.get("/", isLogged, async (req, res, next) => {
+  
+//     const{restaurantName} = req.query
+//     console.log(req.query)
+//     if(restaurantName === undefined){
+//       res.render("restaurant/restaurant.hbs")
+//     }else{
+//       try {
+//       const restaurantResult = await Restaurant.findOne({name:restaurantName})      
+//       res.render("restaurant/search.hbs", {
+//         restaurantResult,
+//       });
+//     } catch (err) {
+//       next(err);
+//     }
+//     }  
+//   }
+// );
 
 //RUTAS PARA EDIT RESTAURANT
 // GET "/restaurant/:id/edit" Ruta para mostrar detalles a editar del restaurante.

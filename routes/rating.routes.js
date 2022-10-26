@@ -15,7 +15,7 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
   try {
 
     const foundRating = await Rating.findOne({user: req.session.loggedUser._id, restaurant: id})
-    console.log("quiero saber que se pasa aqui", foundRating)
+    
     // if (foundRating !== null) {
     //   res.render("rating/new-rating.hbs", {
     //     errorMessage: "Ya has valorado este restaurante"
@@ -24,10 +24,7 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
     // }
 
     const restaurantToRate = await Restaurant.findById(id).select("name");
-    //.populate("username")
-
-    console.log(restaurantToRate);
-    res.render("rating/new-rating.hbs", {
+      res.render("rating/new-rating.hbs", {
       restaurantToRate,
       numbers,
       foundRating,
