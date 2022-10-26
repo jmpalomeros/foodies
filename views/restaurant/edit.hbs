@@ -4,8 +4,6 @@
 
 <form action="/restaurant/{{editRestaurant._id}}/edit" method="POST">
 
-
-
 <label for="name" >Name</label>
 <input type="text" name="name" value="{{editRestaurant.name}}" >
 <br>
@@ -25,11 +23,11 @@
 <input type="text" name="mainDish" value="{{editRestaurant.mainDish}}">
 <br>
 
-<button type="image" value="{{editRestaurant.image}}">Upload Image</button>
+<button class="btn btn-primary border border-2 border-white" type="image" value="{{editRestaurant.image}}">Upload Image</button>
 
 <p style="color: red ">{{errorMessage}}</p>
 
-<button>Upload</button>
+<button class="btn btn-primary border border-2 border-white">Upload</button>
 
 
 </form>

@@ -8,11 +8,17 @@
     <p>Rating: {{this.rating}}</p>
     <p>Commentary: {{this.commentary}}</p>
     
-    <a href="/rating/{{this._id}}/my-ratings/edit"><button>Edit</button></a>
+    <a href="/rating/{{this._id}}/my-ratings/edit">
+    <button class="btn btn-primary border border-2 border-white">Edit</button>
+    </a>
     <br>
-    <form action="/rating/{{this._id}}/my-ratings/delete" method="POST"><button>Delete</button></form>
+    <form action="/rating/{{this._id}}/my-ratings/delete" method="POST">
+    <button class="btn btn-primary border border-2 border-white">Delete</button>
+    </form>
     
     {{/each}}
 
-    <a href="/profile"><button>Go back</button></a>
+    <a href="/profile">
+    <button class="btn btn-primary border border-2 border-white">Go back</button>
+    </a>
 </div>

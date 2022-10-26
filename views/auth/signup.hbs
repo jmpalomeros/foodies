@@ -1,37 +1,33 @@
-
-
 <div>
 
-<h3>Sign Up</h3>
+  <h3>Sign Up</h3>
 
-<form action="/auth/signup" method="POST">
+  <form action="/auth/signup" method="POST">
 
+    <label for="username">Username</label>
+    <input type="text" name="username" />
+    <br />
+    <label for="email">E-mail</label>
+    <input type="text" name="email" />
+    <br />
+    <label for="password">Password</label>
+    <input type="password" name="password" />
+    <br />
+    <label for="age">Age</label>
+    <input type="text" name="age" />
+    <br />
+    <label for="city">City</label>
+    <input type="text" name="city" />
+    <br />
+    <button class="btn btn-primary border border-2 border-white" type="image">Upload Image</button>
 
+    <p style="color: red ">{{errorMessage}}</p>
 
-<label for="username" >Username</label>
-<input type="text" name="username">
-<br>
-<label for="email" >E-mail</label>
-<input type="text" name="email">
-<br>
-<label for="password" >Password</label>
-<input type="password" name="password">
-<br>
-<label for="age" >Age</label>
-<input type="text" name="age">
-<br>
-<label for="city" >City</label>
-<input type="text" name="city">
-<br>
-<button type="image">Upload Image</button>
+    <button
+      type="button"
+      class="btn btn-primary border border-2 border-white"
+    >Send</button>
 
-<p style="color: red ">{{errorMessage}}</p>
-
-<button>Send</button>
-
-
-</form>
-
-
+  </form>
 
 </div>
