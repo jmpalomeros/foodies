@@ -1,7 +1,7 @@
 body {
-  display: flex;
-  align-items: center;
-  margin-left: 60vh;
+  /* display: flex; */
+  /* align-items: center; */
+  */
   
   /* padding: 50px; */
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -15,7 +15,7 @@ h1 {
   color: 15px;
 }
 
-#home-page {
+/* #home-page {
   display: flex;
   
 }
@@ -25,4 +25,4 @@ h1 {
 
   
   
-}
+} */

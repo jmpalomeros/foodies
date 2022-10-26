@@ -13,6 +13,16 @@ const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 router.get("/:id/new-rating", isLogged, async (req, res, next) => {
   const { id } = req.params;
   try {
+
+    const foundRating = await Rating.findOne({user: req.session.loggedUser._id, restaurant: id})
+    console.log("quiero saber que se pasa aqui", foundRating)
+    if (foundRating !== null) {
+      res.render("rating/new-rating.hbs", {
+        errorMessage: "Ya has valorado este restaurante"
+      })
+      return;
+    }
+
     const restaurantToRate = await Restaurant.findById(id).select("name");
     //.populate("username")
 
@@ -49,37 +59,47 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 //   }
 // });
 
-
+//!
 router.post("/:id/new-rating", isLogged, async (req, res, next) => {
-// // <<<<<<< HEAD
-//     const { id } = req.params; //es del restaurante
-//     const {rating, recomendedDish, commentary } = req.body;
-//     console.log(req.body)
-//     console.log("el id del usuario:",req.session.loggedUser._id)
+// // // <<<<<<< HEAD
+   const { id } = req.params; //es del restaurante
+   const {rating, recomendedDish, commentary } = req.body;
+// //     console.log(req.body)
+// //     console.log("el id del usuario:",req.session.loggedUser._id)
 
-// // =======
-//   const { id } = req.params; //es del restaurante
-//   const { rating, recomendedDish, commentary } = req.body;
-//   console.log(req.body);
-//   console.log("el id del usuario:", req.session.loggedUser._id);
-//   let newRating = {
-//     restaurant: id,
-//     user: req.session.loggedUser._id,
-//     rating,
-//     recomendedDish,
-//     commentary,
-//   };
-// // >>>>>>> dde489940631360377ed1b4213ad51d65cde75a9
+// // // =======
+// //   const { id } = req.params; //es del restaurante
+// //   const { rating, recomendedDish, commentary } = req.body;
+// //   console.log(req.body);
+// //   console.log("el id del usuario:", req.session.loggedUser._id);
+// //   let newRating = {
+// //     restaurant: id,
+// //     user: req.session.loggedUser._id,
+// //     rating,
+// //     recomendedDish,
+// //     commentary,
+// //   };
+// // // >>>>>>> dde489940631360377ed1b4213ad51d65cde75a9
+
+if (rating === "" || recomendedDish === "" || commentary === "") {
+  const restaurantToRate = await Restaurant.findById(id).select("name");
+  res.render("rating/new-rating.hbs", {
+    restaurantToRate,
+      numbers,  
+      errorMessage: "Must complete: rating, recomended dish & commentary",
+  });
+  return;
+}
   try {
 
-    const foundUser = await Rating.findOne({user: req.session.loggedUser._id})
-    console.log("quiero saber que se pasa aqui", foundUser)
-    if (foundUser !== null) {
-      res.render("rating/new-rating.hbs", {
-        errorMessage: "Ya has valorado este restaurante"
-      })
-      return;
-    }
+    // const foundUser = await Rating.findOne({user: req.session.loggedUser._id, restaurant: id})
+    // console.log("quiero saber que se pasa aqui", foundUser)
+    // if (foundUser !== null) {
+    //   res.render("rating/new-rating.hbs", {
+    //     errorMessage: "Ya has valorado este restaurante"
+    //   })
+    //   return;
+    // }
     
     let newRating = {
       restaurant: id,
@@ -97,7 +117,7 @@ router.post("/:id/new-rating", isLogged, async (req, res, next) => {
     next(err);
   }
 });
-
+//!
 
 //RUTA READ
 //GET "/rating/:id/ratings" => renderizar todas las valoraciones de un mismo restaurante
