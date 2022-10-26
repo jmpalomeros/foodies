@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 
 const ratingSchema = new mongoose.Schema({
-    restaurant: [{
+    restaurant: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Restaurant"
-    }],
+    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
