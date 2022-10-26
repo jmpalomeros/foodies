@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/Restaurant.model.js");
+const User = require("../models/User.model.js") 
 const { isLogged, admin } = require("../middlewares/auth.middlewares");
 const styleList = require("../utils/styleList");
 
@@ -60,6 +61,28 @@ router.get("/:id", isLogged, async (req, res, next) => {
     next(error);
   }
 });
+
+// RUTA PARA AGREGAR RESTAURANTES A LA PROPIEDAD FAVORITOS
+//POST "/restaurant/:id/"
+router.post("/:id", isLogged, async (req, res, next) => {
+  const {id} = req.params;
+  const { favorites } = req.body
+
+  let updateFavorites = {
+    favorites,
+  };
+  
+
+  try {
+
+    const idUserActive = await Rating.findOne({user: req.session.loggedUser._id})
+    const restaurantFavorite = await User.findByIdAndUpdate(idUserActive, User.push(updateFavorites));
+    res.redirect("/restaurant");
+
+  } catch (error) {
+    next(error)
+  }
+})
 
 //RUTA DEL BUSCADOR DE RESTAURANT
 //GET "/restaurant" ruta para randerizar un buscador de restaurantes
