@@ -52,8 +52,8 @@ router.get("/:id/new-rating", isLogged, async (req, res, next) => {
 
 router.post("/:id/new-rating", isLogged, async (req, res, next) => {
 // // <<<<<<< HEAD
-//     const { id } = req.params; //es del restaurante
-//     const {rating, recomendedDish, commentary } = req.body;
+ const { id } = req.params; //es del restaurante
+ const {rating, recomendedDish, commentary } = req.body;
 //     console.log(req.body)
 //     console.log("el id del usuario:",req.session.loggedUser._id)
 
