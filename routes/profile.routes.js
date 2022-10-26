@@ -16,6 +16,7 @@ router.get("/", isLogged, async (req, res, next) => {
   }
 });
 
+
 //RUTAS PARA EDITAR PERFIL
 
 //GET "profile/:id/edit"=> renderiza el formulario para editar los datos actuales del perfil

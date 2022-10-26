@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-
+const mongoose = require("mongoose")
 
 const userSchema = new Schema(
   {
@@ -8,45 +8,49 @@ const userSchema = new Schema(
       trim: true,
       required: true,
       unique: true,
-      lowercase: true
+      lowercase: true,
     },
     email: {
       type: String,
       required: true,
       unique: true,
       lowercase: true,
-      trim: true
+      trim: true,
     },
     password: {
       type: String,
       required: true,
-      trim:true
+      trim: true,
     },
-    age : {
-      type:Number,
-      required:false,
-      trim:true
-    },
-    city:{
-      type:String,
+    age: {
+      type: Number,
       required: false,
-      trim:true
+      trim: true,
     },
-    role:{
+    city: {
+      type: String,
+      required: false,
+      trim: true,
+    },
+    role: {
       type: String,
       enum: ["user", "admin"],
-      default: "user"
+      default: "user",
     },
     image: {
       type: String,
-      required: false  
+      required: false,
+    },
+    favorites: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Restaurant",
+    }],
   },
-},
   {
     //este segundo objeto ofrece listado de users con detalle de cuando se crearon y actualizaron
-    timestamps: true} 
-  
-  );
+    timestamps: true,
+  }
+);
 
 const User = model("User", userSchema);
 
