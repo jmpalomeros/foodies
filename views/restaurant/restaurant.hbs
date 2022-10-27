@@ -1,11 +1,11 @@
-<div>
+<div >
 
-  <form action="">
-
-    <input  name="name" type="text">
-    <button>Search</button>
-  </form>
-
+  <div class=" d-flex flex-row mb-4 justify-content-around">
+  <a href="/profile"> <button class="btn btn-primary">My profile</button> </a>
+  <br />
+  <a href="/auth/logout"><button class="btn btn-primary">Log out</button></a>
+  </div>
+ 
   <h3>Restaurants</h3>
 
   {{#each restaurantList}}
@@ -15,15 +15,19 @@
   {{/each}}
 
   <br />
+  <form action="">
+    <label for="name"></label>
+    <input type="text" name="name">
+   <button class="btn btn-primary">Search a restaurant</button> 
+  </form>
+  
 
   {{#if powers}}
-  <a href="/restaurant/create"><button>Add new restaurant</button></a>
+  <a href="/restaurant/create"><button class="btn btn-primary">Add new restaurant</button></a>
   {{/if}}
   
-  <br>
-  <a href="/profile"> <button>My profile</button> </a>
-  <br />
-  <a href="/auth/logout"><button>Log out</button></a>
+
+  
   
    
    

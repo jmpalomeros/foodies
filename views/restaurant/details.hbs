@@ -10,17 +10,27 @@
 </ul>
 <p>Aqui irá la imagen</p>
 
-<a href=""><button>Add to Favorites</button></a>
+
+
+<a href="/rating/{{details._id}}/new-rating" >
+<button class="btn btn-primary border border-2 border-white">Add new rating</button>
+</a>
 <br>
-<a href="/rating/{{details._id}}/new-rating" ><button >Add new rating</button></a>
-<br>
-<a href="/rating/{{details._id}}/ratings"><button>View ratings</button></a>
+<a href="/rating/{{details._id}}/ratings">
+<button class="btn btn-primary border border-2 border-white">View ratings</button>
+</a>
 <br>
 {{#if powers}}
-<a href="/restaurant/{{details._id}}/edit"><button>Edit restaurant</button></a>
-<form action="/restaurant/{{details._id}}/delete" method="POST"><button>Delete restaurant</button></form>
+<a href="/restaurant/{{details._id}}/edit">
+<button class="btn btn-primary border border-2 border-white">Edit restaurant</button>
+</a>
+<form action="/restaurant/{{details._id}}/delete" method="POST">
+<button class="btn btn-primary border border-2 border-white">Delete restaurant</button>
+</form>
 {{/if}}
 
-<a href="/restaurant"><button>Go back to list</button></a>
+<a href="/restaurant">
+<button class="btn btn-primary border border-2 border-white">Go back to list</button>
+</a>
 
 </div>
