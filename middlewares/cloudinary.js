@@ -1,29 +1,29 @@
 
 
-const cloudinary = require("cloudinary").v2
-const { Cloudinary } = require("cloudinary-core")
-const multer = require("multer")
-const {CloudinaryStorage} = require("multer-storage-cloudinary")
+// const cloudinary = require("cloudinary").v2
+// const { Cloudinary } = require("cloudinary-core")
+// const multer = require("multer")
+// const {CloudinaryStorage} = require("multer-storage-cloudinary")
 
 
 
 
-cloudinary.config({
-    cloud_name:process.env.CLOUD_NAME,
-    api_key:process.env.CLOUD_API_KEY,
-    api_secret:process.env.CLOUD_API_SECRET
-})
+// cloudinary.config({
+//     cloud_name:process.env.CLOUD_NAME,
+//     api_key:process.env.CLOUD_API_KEY,
+//     api_secret:process.env.CLOUD_API_SECRET
+// })
 
-const storage = CloudinaryStorage({
-   cloudinary,
-   params: {
-    allowedFormats: ["jpg", "png"],
-    folder: "patata"
-   }
-})
+// const storage = CloudinaryStorage({
+//    cloudinary,
+//    params: {
+//     allowedFormats: ["jpg", "png"],
+//     folder: "patata"
+//    }
+// })
 
-const uploader = multer({
-    storage
-})
+// const uploader = multer({
+//     storage
+// })
 
-module.exports = uploader
+// module.exports = uploader

@@ -1,11 +1,11 @@
 
 <div>
   <nav class=" d-flex flex-row mb-4 justify-content-between">
-  <img src="../images/foodie-logo.png" alt="logo-foodies" height="80px" />
+  {{!-- <img src="../images/foodie-logo.png" alt="logo-foodies" height="80px" /> --}}
 
-  <form action="">
-    <label for="name"></label>
-    <input type="text" name="name">
+  <form action="/restaurant/search/{{restaurantResult._id}}" method="GET">
+    {{!-- <label for="name"></label> --}}
+    <input type="text" name="restaurantName">
    <button class="btn btn-primary">Search a restaurant</button> 
   </form>
   </nav>

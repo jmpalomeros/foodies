@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
-//const { isLogged } = require("../middlewares/auth.middlewares");
+const { isLogged } = require("../middlewares/auth.middlewares");
+// const uploader = require("../middlewares/cloudinary.js")
 
 //SIGN UP ROUTE
 // GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
@@ -11,8 +12,11 @@ router.get("/signup", (req, res, next) => {
 });
 
 // POST "/auth/signup" => PARA CREAR USUARIO EN LA BASE DE DATOS
-
+// uploader.single("image"),
 router.post("/signup", async (req, res, next) => {
+
+  // console.log(req.file.path)
+
   const { username, email, password, age, city, image } = req.body;
 
   console.log(req.body);

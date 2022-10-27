@@ -4,6 +4,7 @@ const Restaurant = require("../models/Restaurant.model.js");
 const User = require("../models/User.model.js") 
 const { isLogged, admin } = require("../middlewares/auth.middlewares");
 const styleList = require("../utils/styleList");
+const Rating = require("../models/Rating.model.js");
 
 // RUTAS PARA CREATE RESTAURANT
 
@@ -47,6 +48,29 @@ router.get("/", isLogged, async (req, res, next) => {
   }
 });
 
+//RUTA DEL BUSCADOR DE RESTAURANT
+//GET "/restaurant" ruta para randerizar un buscador de restaurantes
+
+router.get("/search", isLogged, async (req, res, next) => {
+  
+  const{restaurantName} = req.query
+  console.log(req.query)
+  if(restaurantName === undefined){
+    res.render("restaurant/restaurant.hbs")
+  }else{
+    try {
+    const restaurantResult = await Restaurant.findOne({name:restaurantName})      
+    res.render("restaurant/search.hbs", {
+      restaurantResult
+    });
+  } catch (err) {
+    next(err);
+  }
+  }  
+ }
+);
+
+
 // GET ("/restaurant/:id") Ruta para mostrar detalles de restaurante
 router.get("/:id", isLogged, async (req, res, next) => {
   const { id } = req.params;
@@ -64,45 +88,36 @@ router.get("/:id", isLogged, async (req, res, next) => {
 //POST "/restaurant/:id/"
 router.post("/:id", isLogged, async (req, res, next) => {
   const {id} = req.params;
-  const { favorites } = req.body
+  // const { favorites } = req.body
 
-  let updateFavorites = {
-    favorites,
-  };
+  // let updateFavorites = {
+  //   favorites,
+  // };
   
 
   try {
 
-    const idUserActive = await Rating.findOne({user: req.session.loggedUser._id})
-    const restaurantFavorite = await User.findByIdAndUpdate(idUserActive, User.push(updateFavorites));
-    res.redirect("/restaurant");
+    const actualId = await Restaurant.findById(id);
+    // const actualUser = await User.findById(req.session.loggedUser._id);
+    const userModifyFav = await User.findByIdAndUpdate(req.session.loggedUser._id, {
+      $addToSet: {favorites: actualId},
+    })
+    // .select("name")
+
+    // const idUserActive = await Rating.findOne({user: req.session.loggedUser._id})
+    // const restaurantFavorite = await User.findByIdAndUpdate(idUserActive, User.push(updateFavorites));
+    // res.redirect("/restaurant");
+    res.redirect("/restaurant")
+
+    // res.render("my-profile.hbs", {
+    //   userModifyFav
+    // })
 
   } catch (error) {
     next(error)
   }
 })
 
-//RUTA DEL BUSCADOR DE RESTAURANT
-//GET "/restaurant" ruta para randerizar un buscador de restaurantes
-
-// router.get("/", isLogged, async (req, res, next) => {
-  
-//     const{restaurantName} = req.query
-//     console.log(req.query)
-//     if(restaurantName === undefined){
-//       res.render("restaurant/restaurant.hbs")
-//     }else{
-//       try {
-//       const restaurantResult = await Restaurant.findOne({name:restaurantName})      
-//       res.render("restaurant/search.hbs", {
-//         restaurantResult,
-//       });
-//     } catch (err) {
-//       next(err);
-//     }
-//     }  
-//   }
-// );
 
 //RUTAS PARA EDIT RESTAURANT
 // GET "/restaurant/:id/edit" Ruta para mostrar detalles a editar del restaurante.
