@@ -1,35 +1,41 @@
 <div >
+
+<nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+          </a>
+        </div>
+      </nav>
+
 <div>
-<h2>Welcome {{activeSession.username}}</h2>
+<h3>Welcome {{activeSession.username}}</h3>
 
+<div class="card" style="width: 18rem;">
 {{#with activeSession}}
-<img src="{{image}}" alt="profile-image" height="150px">
-
-<br>
-<p>Email: {{email}}</p>
-<br>
-<p>City: {{city}}</p>
-<br>
-<p>Age: {{age}}</p>
-<br>
-<h6>My favorites places:</h6>
+<img class="card-img-top" src="{{image}}" alt="profile-image" height="300px">
+<div class="card-body">
+<p class="card-text">Email: {{email}}</p>
+<p class="card-text">City: {{city}}</p>
+<p class="card-text">Age: {{age}}</p>
+<h6 class="card-text">My favorites places:</h6>
 {{#each favorites}}
 <ul>
-<li>{{name}}</li>
+<li class="card-text">{{name}}</li>
 </ul>
 {{/each}}
 {{/with}}    
 </div>
+</div>
 
-
-<div >
-
-<a href="/profile/{{activeSession._id}}/edit">
-<button class="btn btn-primary border border-2 border-white">Edit profile</button>
-</a>
+<div class="d-flex flex-direction row">
 
 <a href="/rating/my-ratings">
 <button class="btn btn-primary border border-2 border-white">Your ratings</button>
+</a>
+
+<a href="/profile/{{activeSession._id}}/edit">
+<button class="btn btn-primary border border-2 border-white">Edit profile</button>
 </a>
 
 <a href="/restaurant">

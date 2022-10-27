@@ -1,27 +1,41 @@
-<div>
-  <h2>Edit your rating:</h2>
-  
-  <form action="/rating/{{ratingToEdit._id}}/my-ratings/edit" method="POST">
+<div class="d-flex flex-column mb-4 justify-content-around">
 
+<nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+          </a>
+        </div>
+      </nav>
+
+  <h2>Edit your rating:</h2>
+  <div class="mx5 px5" id="formulario-sign">
+  <form action="/rating/{{ratingToEdit._id}}/my-ratings/edit" method="POST">
+    <div class="mb-3">
     <p>Your previous rating: {{ratingToEdit.rating}}</p>
+    </div>
+    <div class="mb-3"></div>
     <select name="rating">
       <option value="">Choose a new rating</option>
       {{#each numbers}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
-    <br />
-    <label for="recomendedDish">Recomended dish </label>
-    <input
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="recomendedDish">Recomended dish </label>
+    <input class="form-control"
       type="text"
       name="recomendedDish"
       value="{{ratingToEdit.recomendedDish}}"
     />
-    <br />
-    <label for="commentary">Commentary </label>
-    <input type="text" name="commentary" value="{{ratingToEdit.commentary}}" />
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="commentary">Commentary </label>
+    <input class="form-control" type="text" name="commentary" value="{{ratingToEdit.commentary}}" />
+    </div>
     <button class="btn btn-primary border border-2 border-white">Save</button>
+    
 
   </form>
-
-</div>
+</div

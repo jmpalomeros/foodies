@@ -1,15 +1,25 @@
-<div>
+<div class="d-flex flex-column mb-4 justify-content-around">
 
+  <nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+          </a>
+        </div>
+      </nav>
+  
   <h2>User´s opinion</h2>
 
-  {{#each restaurantRating}}
 
+  {{#each restaurantRating}}
+  <div class="card" style="width: 18rem;"></div>
+  <div class="card-body"></div>
     {{#each this.user}}
       <h4>{{this.username}}</h4>
     {{/each}}
-    <p>{{this.rating}}</p>
-    <p>{{this.recomendedDish}}</p>
-    <p>{{this.commentary}}</p>
+    <p class="card-text">{{this.rating}}</p>
+    <p class="card-text">{{this.recomendedDish}}</p>
+    <p class="card-text">{{this.commentary}}</p>
   {{/each}}
   <a href="/restaurant/{{restaurantRating._id}}">
     <button class="btn btn-primary border border-2 border-white">Go home</button>

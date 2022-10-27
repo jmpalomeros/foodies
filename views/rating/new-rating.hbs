@@ -1,4 +1,13 @@
-<div>
+<div class="d-flex flex-column mb-4 justify-content-around">
+
+<nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+          </a>
+        </div>
+      </nav>
+
 <h2>Your rating:</h2>
 
 <h3>{{restaurantToRate.name}}</h3>
@@ -9,8 +18,9 @@
 <p style="color: red ">{{errorMessage}}</p>
 
 {{else}}
-
+<div class="mx5 px5" id="formulario-sign">
 <form action="/rating/{{restaurantToRate._id}}/new-rating" method="POST">
+
 <select name="rating">
 <option value="">Choose your rating</option>
 
@@ -19,16 +29,19 @@
 {{/each}}
 </select>
 <br>
-
-<label for="recomendedDish">Recomended dish </label>
-<input type="text" name="recomendedDish">
-<br>
-<label for="commentary">Commentary </label>
-<input type="text" name="commentary">
+<div class="mb-3">
+<label class="form-label" for="recomendedDish">Recomended dish </label>
+<input class="form-control" type="text" name="recomendedDish">
+</div>
+<div class="mb-3"></div>
+<label class="form-label" for="commentary">Commentary </label>
+<input class="form-control" type="text" name="commentary">
+</div>
 
 <button class="btn btn-primary border border-2 border-white">Save</button>
 
 </form>
+</div>
 
 {{/if}}
 

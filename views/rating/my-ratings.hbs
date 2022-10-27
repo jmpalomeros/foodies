@@ -1,17 +1,29 @@
-<div>
-  <h2>My ratings</h2>
+<div class="d-flex flex-direction row">
+
+  <nav class="navbar bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+          </a>
+        </div>
+      </nav>
+
+ <h3>My ratings</h3>
   {{#each myRating}}
-
+  <div class="card mb-3" style="width: 18rem;">
+    <div class="card-body">
     {{#each this.restaurant}}
-      <h3> {{this.name}}</h3>
+      <h3 class="card-title"> {{this.name}}</h3>
     {{/each}}
-    <p>Rating: {{this.rating}}</p>
-    <p>Commentary: {{this.commentary}}</p>
-
+    <p class="card-text">Rating: {{this.rating}}</p>
+    <p class="card-text">Commentary: {{this.commentary}}</p>
+    </div>
+  </div>
+  
     <a href="/rating/{{this._id}}/my-ratings/edit">
       <button class="btn btn-primary border border-2 border-white">Edit</button>
     </a>
-    <br />
+    
     <form action="/rating/{{this._id}}/my-ratings/delete" method="POST">
       <button
         class="btn btn-primary border border-2 border-white"
