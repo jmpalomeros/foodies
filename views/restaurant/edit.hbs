@@ -1,41 +1,42 @@
 <div>
 
-<h3>Edit restaurant</h3>
+  <h3>Edit restaurant</h3>
 
-<form action="/restaurant/{{editRestaurant._id}}/edit" method="POST" enctype="multipart/form-data">
+  <form
+    action="/restaurant/{{editRestaurant._id}}/edit"
+    method="POST"
+    enctype="multipart/form-data"
+  >
 
-<label for="name" >Name</label>
-<input type="text" name="name" value="{{editRestaurant.name}}" >
-<br>
-<label for="location" >Location</label>
-<input type="text" name="location" value="{{editRestaurant.location}}">
-<br>
-<label for="style" >Style</label>
-{{!-- <input type="text" name="style" value="{{styleList}}"> --}}
-<select name="style" >
-    <option value="">Choose a style</option>
-    {{#each styleList}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
-</select>
-<br>
-<label for="mainDish" >Main dish</label>
-<input type="text" name="mainDish" value="{{editRestaurant.mainDish}}">
-<br>
-<label for="image">Upload Image</label>
-<input type="file" name="image" />
+    <label for="name">Name</label>
+    <input type="text" name="name" value="{{editRestaurant.name}}" />
+    <br />
+    <label for="location">Location</label>
+    <input type="text" name="location" value="{{editRestaurant.location}}" />
+    <br />
+    <label for="style">Style</label>
 
+    <select name="style">
+      <option value="">Choose a style</option>
+      {{#each styleList}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <br />
+    <label for="mainDish">Main dish</label>
+    <input type="text" name="mainDish" value="{{editRestaurant.mainDish}}" />
+    <br />
+    <label for="image">Upload Image</label>
+    <input type="file" name="image" />
 
-<p style="color: red ">{{errorMessage}}</p>
+    <p style="color: red ">{{errorMessage}}</p>
 
-<button class="btn btn-primary border border-2 border-white">Upload</button>
+    <button class="btn btn-primary border border-2 border-white">Upload</button>
 
+  </form>
 
-</form>
-
-<a href="/restaurant">
-<button class="btn btn-primary border border-2 border-white">Go home</button>
-</a>
-
+  <a href="/restaurant">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>
 
 </div>

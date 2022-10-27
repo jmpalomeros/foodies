@@ -18,7 +18,7 @@ const restaurantSchema = new Schema(
         type:String,
         enum: styleList, 
         required: true,
-        lowercase: true
+        
     } ,
     mainDish: {
         type: String 

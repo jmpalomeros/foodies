@@ -27,24 +27,25 @@ app.locals.appTitle = `${capitalize(projectName)}`;
 // Ejecuciones de middleware para variables locales
 
 app.use((req, res, next) => {
-    if (req.session.activeUser === undefined) {
-      res.locals.isUserActive = false
-    } else {
-      res.locals.isUserActive = true
-    }
-    next()
-  })
-
+  if (req.session.activeUser === undefined) {
+    res.locals.isUserActive = false;
+  } else {
+    res.locals.isUserActive = true;
+  }
+  next();
+});
 
 app.use((req, res, next) => {
-    if(req.session.loggedUser === undefined || req.session.loggedUser.role !=="admin") {
-        res.locals.powers = false
-    } else{
-        res.locals.powers=true
-    }
-    next()
-})
-
+  if (
+    req.session.loggedUser === undefined ||
+    req.session.loggedUser.role !== "admin"
+  ) {
+    res.locals.powers = false;
+  } else {
+    res.locals.powers = true;
+  }
+  next();
+});
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");

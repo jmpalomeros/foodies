@@ -1,41 +1,44 @@
 <div>
 
-<h3>Restaurant {{details.name}}</h3>
-<ul>
+  <h3>Restaurant {{details.name}}</h3>
+  <ul>
     <p>Location: {{details.location}}</p>
-    <br>
+    <br />
     <p>Style: {{details.style}}</p>
-    <br>
+    <br />
     <p>Main Dish: {{details.mainDish}}</p>
-</ul>
+  </ul>
 
-<img src="{{details.image}}" alt="restaurant" width="200px">
+  <img src="{{details.image}}" alt="restaurant" width="200px" />
 
+  <form action="/restaurant/{{details._id}}" method="POST">
+    <button
+      class="btn btn-primary border border-2 border-white"
+    >Favorites</button>
+  </form>
+  <br />
 
-<form action="/restaurant/{{details._id}}" method="POST">
-<button class="btn btn-primary border border-2 border-white">Favorites</button>
-</form>
-<br>
+  <a href="/rating/{{details._id}}/new-rating">
+    <button class="btn btn-primary border border-2 border-white">Add new rating</button>
+  </a>
+  <br />
+  <a href="/rating/{{details._id}}/ratings">
+    <button class="btn btn-primary border border-2 border-white">View ratings</button>
+  </a>
+  <br />
+  {{#if powers}}
+    <a href="/restaurant/{{details._id}}/edit">
+      <button class="btn btn-primary border border-2 border-white">Edit
+        restaurant</button>
+    </a>
+    <form action="/restaurant/{{details._id}}/delete" method="POST">
+      <button class="btn btn-primary border border-2 border-white">Delete
+        restaurant</button>
+    </form>
+  {{/if}}
 
-<a href="/rating/{{details._id}}/new-rating" >
-<button class="btn btn-primary border border-2 border-white">Add new rating</button>
-</a>
-<br>
-<a href="/rating/{{details._id}}/ratings">
-<button class="btn btn-primary border border-2 border-white">View ratings</button>
-</a>
-<br>
-{{#if powers}}
-<a href="/restaurant/{{details._id}}/edit">
-<button class="btn btn-primary border border-2 border-white">Edit restaurant</button>
-</a>
-<form action="/restaurant/{{details._id}}/delete" method="POST">
-<button class="btn btn-primary border border-2 border-white">Delete restaurant</button>
-</form>
-{{/if}}
-
-<a href="/restaurant">
-<button class="btn btn-primary border border-2 border-white">Go home</button>
-</a>
+  <a href="/restaurant">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>
 
 </div>

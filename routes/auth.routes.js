@@ -3,8 +3,8 @@ const router = express.Router();
 const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const { isLogged } = require("../middlewares/auth.middlewares");
-// const uploader = require("../middlewares/cloudinary.js")
-// , uploader.single("image")
+
+
 //SIGN UP ROUTE
 // GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
 router.get("/signup", (req, res, next) => {
@@ -12,15 +12,11 @@ router.get("/signup", (req, res, next) => {
 });
 
 // POST "/auth/signup" => PARA CREAR USUARIO EN LA BASE DE DATOS
-// uploader.single("image"),
+
 router.post("/signup", async (req, res, next) => {
-
-  // console.log(req.file.path)
-
+  
   const { username, email, password, age, city, image } = req.body;
-
-  console.log(req.body);
-
+  
   if (username === "" || email === "" || password === "") {
     res.render("auth/signup.hbs", {
       errorMessage: "Must complete: username, email & password",
@@ -71,11 +67,10 @@ router.post("/signup", async (req, res, next) => {
       password: hashPassword,
       age: age,
       city: city,
-      // image: req.file.path
-    };
+      };
 
     await User.create(newUser);
-    res.redirect("/auth/login"); 
+    res.redirect("/auth/login");
   } catch (err) {
     next(err);
   }
@@ -91,7 +86,7 @@ router.get("/login", (req, res, next) => {
 
 router.post("/login", async (req, res, next) => {
   const { username, password } = req.body;
-  console.log(req.body);
+  
   // Validamos campos completos en backend
   if (username === "" || password === "") {
     res.render("auth/login.hbs", {
@@ -130,7 +125,6 @@ router.post("/login", async (req, res, next) => {
 // GET ("/auth/logout") => ruta para deslogar
 router.get("/logout", (req, res, next) => {
   req.session.destroy(() => {
-    //res.render("auth/logout.hbs");
     res.redirect("/");
   });
 });

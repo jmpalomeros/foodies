@@ -3,17 +3,16 @@
   <h2>User´s opinion</h2>
 
   {{#each restaurantRating}}
-    
+
     {{#each this.user}}
-<h4>{{this.username}}</h4>
-{{/each}}
+      <h4>{{this.username}}</h4>
+    {{/each}}
     <p>{{this.rating}}</p>
     <p>{{this.recomendedDish}}</p>
     <p>{{this.commentary}}</p>
   {{/each}}
-<a href="/restaurant/{{restaurantRating._id}}">
-<button class="btn btn-primary border border-2 border-white">Go home</button>
-</a>
-{{!-- la ruta no esta llendo al id del restaurant anterior --}}
+  <a href="/restaurant/{{restaurantRating._id}}">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>
 
 </div>

@@ -8,7 +8,6 @@
 <br>
 <p style="color: red ">{{errorMessage}}</p>
 
-
 {{else}}
 
 <form action="/rating/{{restaurantToRate._id}}/new-rating" method="POST">
@@ -30,6 +29,7 @@
 <button class="btn btn-primary border border-2 border-white">Save</button>
 
 </form>
+
 {{/if}}
 
 <a href="/restaurant"><button class="btn btn-primary border border-2 border-white">Go home</button></a>

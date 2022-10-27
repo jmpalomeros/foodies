@@ -1,22 +1,27 @@
-
 <div>
-<h2>Edit your rating:</h2>
-<form action="/rating/{{ratingToEdit._id}}/my-ratings/edit" method="POST">
-    
+  <h2>Edit your rating:</h2>
+  
+  <form action="/rating/{{ratingToEdit._id}}/my-ratings/edit" method="POST">
+
     <p>Your previous rating: {{ratingToEdit.rating}}</p>
     <select name="rating">
-    <option value="">Choose a new rating</option>
-    {{#each numbers}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
+      <option value="">Choose a new rating</option>
+      {{#each numbers}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
     </select>
-    <br>
+    <br />
     <label for="recomendedDish">Recomended dish </label>
-    <input type="text" name="recomendedDish" value="{{ratingToEdit.recomendedDish}}">
-    <br>
+    <input
+      type="text"
+      name="recomendedDish"
+      value="{{ratingToEdit.recomendedDish}}"
+    />
+    <br />
     <label for="commentary">Commentary </label>
-    <input type="text" name="commentary" value="{{ratingToEdit.commentary}}">
+    <input type="text" name="commentary" value="{{ratingToEdit.commentary}}" />
     <button class="btn btn-primary border border-2 border-white">Save</button>
-</form>
+
+  </form>
 
 </div>

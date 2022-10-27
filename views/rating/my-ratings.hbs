@@ -1,24 +1,26 @@
 <div>
-    <h2>My ratings</h2>
-    {{#each myRating}}
+  <h2>My ratings</h2>
+  {{#each myRating}}
 
     {{#each this.restaurant}}
-    <h3> {{this.name}}</h3>
+      <h3> {{this.name}}</h3>
     {{/each}}
     <p>Rating: {{this.rating}}</p>
     <p>Commentary: {{this.commentary}}</p>
-    
-    <a href="/rating/{{this._id}}/my-ratings/edit">
-    <button class="btn btn-primary border border-2 border-white">Edit</button>
-    </a>
-    <br>
-    <form action="/rating/{{this._id}}/my-ratings/delete" method="POST">
-    <button class="btn btn-primary border border-2 border-white">Delete</button>
-    </form>
-    
-    {{/each}}
 
-    <a href="/restaurant">
-    <button class="btn btn-primary border border-2 border-white">Go home</button>
+    <a href="/rating/{{this._id}}/my-ratings/edit">
+      <button class="btn btn-primary border border-2 border-white">Edit</button>
     </a>
+    <br />
+    <form action="/rating/{{this._id}}/my-ratings/delete" method="POST">
+      <button
+        class="btn btn-primary border border-2 border-white"
+      >Delete</button>
+    </form>
+
+  {{/each}}
+
+  <a href="/restaurant">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>
 </div>
