@@ -2,7 +2,7 @@
 
   <h2>Edit your profile</h2>
 
-  <form action="/profile/{{editedProfile._id}}/edit" method="POST">
+  <form action="/profile/{{editedProfile._id}}/edit" method="POST" enctype="multipart/form-data">
 
     <label for="username">Username: </label>
     <input type="text" name="username" value="{{editedProfile.username}}" />
@@ -19,12 +19,14 @@
     <label for="city">City: </label>
     <input type="text" name="city" value="{{editedProfile.city}}" />
     <br />
-    <button
+      <label for="image">Upload picture</label>
+    <input type="file" name="image">
+    {{!-- <button
       class="btn btn-primary border border-2 border-white"
       type="image"
       name="image"
       value="{{editedProfile.image}}"
-    >Upload new image</button>
+    >Upload new image</button> --}}
 
     <br />
 

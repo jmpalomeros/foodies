@@ -2,23 +2,23 @@
 <div>
 <h2>Welcome {{activeSession.username}}</h2>
 
-{{#with activeSession}}
+{{!-- <img src="{{activeSession.image}}" alt="profile-img"> --}}
 
-{{username}}
+{{#with activeSession}}
+<img src="{{image}}" alt="profile-image" height="150px">
+
 <br>
-{{email}}
+<p>Email: {{email}}</p>
 <br>
-{{city}}
+<p>City: {{city}}</p>
 <br>
-{{age}}
-<br>
-{{image}}
+<p>Age: {{age}}</p>
 <br>
 <h6>My favorites places:</h6>
 {{#each favorites}}
-<ol>
-{{name}}
-</ol>
+<ul>
+<li>{{name}}</li>
+</ul>
 {{/each}}
 {{/with}}    
 </div>

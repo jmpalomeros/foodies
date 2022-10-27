@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User.model.js");
 const { isLogged } = require("../middlewares/auth.middlewares");
+const uploader = require("../middlewares/cloudinary.js")
 
 //GET "/profile"=> ruta donde el usuario puede ver su perfil
 router.get("/", isLogged, async (req, res, next) => {
@@ -21,7 +22,7 @@ router.get("/", isLogged, async (req, res, next) => {
 //RUTAS PARA EDITAR PERFIL
 
 //GET "profile/:id/edit"=> renderiza el formulario para editar los datos actuales del perfil
-router.get("/:id/edit", isLogged, async (req, res, next) => {
+router.get("/:id/edit", isLogged, uploader.single("image"), async (req, res, next) => {
   const { id } = req.params;
   try {
     const editedProfile = await User.findById(id);
@@ -35,7 +36,7 @@ router.get("/:id/edit", isLogged, async (req, res, next) => {
 });
 
 //POST "profile/:id/edit"=> recibe los datos editados y los actualiza
-router.post("/:id/edit", isLogged, async (req, res, next) => {
+router.post("/:id/edit", isLogged, uploader.single("image"), async (req, res, next) => {
   const { id } = req.params;
   const { username, password, email, age, city, image } = req.body;
 
@@ -45,8 +46,9 @@ router.post("/:id/edit", isLogged, async (req, res, next) => {
     email,
     age,
     city,
-    image,
+    image: req.file.path,
   };
+
   try {
     const profileUploaded = await User.findByIdAndUpdate(id, uploadProfile);
     console.log("perfil actualizado", uploadProfile);

@@ -6,30 +6,29 @@ const userSchema = new Schema(
     username: {
       type: String,
       trim: true,
-      required: true,
+      // required: true,
       unique: true,
       lowercase: true,
     },
     email: {
       type: String,
-      required: true,
+      // required: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
     password: {
       type: String,
-      required: true,
+      // required: true,
       trim: true,
     },
     age: {
       type: Number,
-      required: false,
+      // required: false,
       trim: true,
     },
     city: {
       type: String,
-      required: false,
       trim: true,
     },
     role: {
@@ -39,7 +38,7 @@ const userSchema = new Schema(
     },
     image: {
       type: String,
-      required: false,
+      
     },
     favorites: [{
       type: mongoose.Schema.Types.ObjectId,

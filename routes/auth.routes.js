@@ -4,7 +4,7 @@ const User = require("../models/User.model");
 const bcrypt = require("bcryptjs");
 const { isLogged } = require("../middlewares/auth.middlewares");
 // const uploader = require("../middlewares/cloudinary.js")
-
+// , uploader.single("image")
 //SIGN UP ROUTE
 // GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTRO
 router.get("/signup", (req, res, next) => {
@@ -71,11 +71,11 @@ router.post("/signup", async (req, res, next) => {
       password: hashPassword,
       age: age,
       city: city,
-      image: image,
+      // image: req.file.path
     };
 
     await User.create(newUser);
-    res.redirect("/restaurant"); 
+    res.redirect("/auth/login"); 
   } catch (err) {
     next(err);
   }
