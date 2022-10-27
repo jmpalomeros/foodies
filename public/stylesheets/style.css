@@ -2,12 +2,7 @@
 
 body {
   font-family: 'Noticia Text', serif, 'Titan One', "cursive";
-  
-  /*display: flex;
-  align-items: center;
-  
-  
-   padding: 50px; */
+  height: 100vh;
   font-size: 15px 
 }
 
@@ -19,14 +14,11 @@ h1 {
   color: 15px;
 }
 
-/* #home-page {
-  display: flex;
-  
-}
+/* #formulario-sign {
+  margin-right: 80%
 
-#nav-home {
-  display: flex;
-
-  
-  
 } */
+.patata {
+  /* margin: 35%; */
+  margin: 0% 30% 0% 30%
+}
