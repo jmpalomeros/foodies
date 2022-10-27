@@ -1,21 +1,29 @@
 <div>
+<div class="card" style="width: 18rem;">
+<img src="{{details.image}}"  class="card-img-top"
+ alt="restaurant" width="200px" />
+ <div class="card-body">
 
-  <h3>Restaurant {{details.name}}</h3>
+  <h5 class="card-title"
+>Restaurant {{details.name}}</h5>
   <ul>
-    <p>Location: {{details.location}}</p>
-    <br />
-    <p>Style: {{details.style}}</p>
-    <br />
-    <p>Main Dish: {{details.mainDish}}</p>
+    <li class="card-text"
+>Location: {{details.location}}</li>
+    <li class="card-text"
+>Style: {{details.style}}</li>
+    <li class="card-text"
+>Main Dish: {{details.mainDish}}</li>
   </ul>
+  
+</div>
 
-  <img src="{{details.image}}" alt="restaurant" width="200px" />
+</div>
 
-  <form action="/restaurant/{{details._id}}" method="POST">
+  <form action="/restaurant/{{details._id}}" method="POST" enctype="multipart/form-data">
     <button
       class="btn btn-primary border border-2 border-white"
     >Favorites</button>
-  </form>
+  </form >
   <br />
 
   <a href="/rating/{{details._id}}/new-rating">
