@@ -5,26 +5,27 @@ const User = require("../models/User.model.js")
 const { isLogged, admin } = require("../middlewares/auth.middlewares");
 const styleList = require("../utils/styleList");
 const Rating = require("../models/Rating.model.js");
+const uploader = require("../middlewares/cloudinary.js")
 
 
 // RUTAS PARA CREATE RESTAURANT
 
 //GET "restaurant/create"=> para visualizar formulario de registro de restaurante
 
-router.get("/create", isLogged, admin, (req, res, next) => {
+router.get("/create", isLogged, admin,  (req, res, next) => {
   res.render("restaurant/create.hbs", { styleList });
 });
 
 //POST "restaurant/create" => para enviar formulario a la BD
-router.post("/create", isLogged, admin, async (req, res, next) => {
+router.post("/create", isLogged, admin, uploader.single("image"), async (req, res, next) => {
   const { name, location, style, mainDish, image } = req.body;
 
   let newRest = {
-    name: name,
-    location: location,
-    style: style,
-    mainDish: mainDish,
-    image: image,
+    name,
+    location,
+    style,
+    mainDish,
+    image:req.file.path,
   };
 
   try {
@@ -138,7 +139,7 @@ router.get("/:id/edit", isLogged, admin, async (req, res, next) => {
 });
 
 //POST "/restaurant/:id/edit" Ruta para traer desde la BD los campos a editar y actualizar
-router.post("/:id/edit", isLogged, admin, async (req, res, next) => {
+router.post("/:id/edit", isLogged, admin, uploader.single("image"),async (req, res, next) => {
   const { id } = req.params;
   const { name, location, style, mainDish, image } = req.body;
 
@@ -147,7 +148,7 @@ router.post("/:id/edit", isLogged, admin, async (req, res, next) => {
     location,
     style,
     mainDish,
-    image,
+    image:req.file.path,
   };
 
   try {

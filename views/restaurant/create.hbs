@@ -1,42 +1,38 @@
-
-
 <div>
 
-<h3>Add restaurant</h3>
+  <h3>Add restaurant</h3>
 
-<form action="/restaurant/create" method="POST">
+  <form action="/restaurant/create" method="POST" enctype="multipart/form-data">
 
+    <label for="name">Name</label>
+    <input type="text" name="name" />
+    <br />
+    <label for="location">Location</label>
+    <input type="text" name="location" />
+    <br />
+    <label for="style">Style</label>
 
+    <select name="style">
+      <option value="">Choose a style</option>
+      {{#each styleList}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </select>
+    <br />
+    <label for="mainDish">Main dish</label>
+    <input type="text" name="mainDish" />
+    <br />
+    <label for="image">Upload Image</label>
+    <input type="file" name="image" />
 
-<label for="name" >Name</label>
-<input type="text" name="name">
-<br>
-<label for="location" >Location</label>
-<input type="text" name="location">
-<br>
-<label for="style" >Style</label>
-{{!-- <input type="text" name="style" value="{{newRest.style}}"> --}}
-<select name="style" >
-    <option value="">Choose a style</option>
-    {{#each styleList}}
-    <option value="{{this}}">{{this}}</option>
-    {{/each}}
-</select>
-<br>
-<label for="mainDish" >Main dish</label>
-<input type="text" name="mainDish">
-<br>
+    <p style="color: red ">{{errorMessage}}</p>
 
-<button class="btn btn-primary border border-2 border-white" type="image">Upload Image</button>
+    <button class="btn btn-primary border border-2 border-white">Send</button>
 
-<p style="color: red ">{{errorMessage}}</p>
+  </form>
 
-<button class="btn btn-primary border border-2 border-white">Send</button>
-
-</form>
-
-<a href="/restaurant">
-<button class="btn btn-primary border border-2 border-white">Go home</button>
-</a>
+  <a href="/restaurant">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>
 
 </div>

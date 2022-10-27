@@ -1,10 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noticia+Text:wght@700&family=Titan+One&display=swap');
+
 body {
+  font-family: 'Noticia Text', serif, 'Titan One', "cursive";
+  
   /*display: flex;
   align-items: center;
   
   
    padding: 50px; */
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 15px 
 }
 
 a {

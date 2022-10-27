@@ -1,6 +1,6 @@
 <div>
 
-<h3>{{details.name}}</h3>
+<h3>Restaurant {{details.name}}</h3>
 <ul>
     <p>Location: {{details.location}}</p>
     <br>
@@ -8,7 +8,9 @@
     <br>
     <p>Main Dish: {{details.mainDish}}</p>
 </ul>
-<p>Aqui irá la imagen</p>
+
+<img src="{{details.image}}" alt="restaurant" width="200px">
+
 
 <form action="/restaurant/{{details._id}}" method="POST">
 <button class="btn btn-primary border border-2 border-white">Favorites</button>
