@@ -7,10 +7,11 @@ const { isLogged } = require("../middlewares/auth.middlewares");
 router.get("/", isLogged, async (req, res, next) => {
   try {
     console.log("usuario activo", req.session.loggedUser);
-    const activeSession = await User.findById(req.session.loggedUser._id);
+    const activeSession = await User.findById(req.session.loggedUser._id).populate("favorites") 
     res.render("profile/my-profile.hbs", {
       activeSession,
     });
+    
   } catch (err) {
     next(err);
   }

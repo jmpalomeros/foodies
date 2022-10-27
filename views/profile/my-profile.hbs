@@ -14,7 +14,12 @@
 <br>
 {{image}}
 <br>
-{{favorites}}
+<h6>My favorites places:</h6>
+{{#each favorites}}
+<ol>
+{{name}}
+</ol>
+{{/each}}
 {{/with}}    
 </div>
 
@@ -30,7 +35,7 @@
 </a>
 
 <a href="/restaurant">
-<button class="btn btn-primary border border-2 border-white">Go to restaurant</button>
+<button class="btn btn-primary border border-2 border-white">Go home</button>
 </a>
 
 <form action="/profile/{{activeSession._id}}/delete" method="POST">

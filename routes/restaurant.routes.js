@@ -6,6 +6,7 @@ const { isLogged, admin } = require("../middlewares/auth.middlewares");
 const styleList = require("../utils/styleList");
 const Rating = require("../models/Rating.model.js");
 
+
 // RUTAS PARA CREATE RESTAURANT
 
 //GET "restaurant/create"=> para visualizar formulario de registro de restaurante
@@ -55,11 +56,11 @@ router.get("/search", isLogged, async (req, res, next) => {
   
   const{restaurantName} = req.query
   console.log(req.query)
-  if(restaurantName === undefined){
+  if(restaurantName === undefined || restaurantName === ""){
     res.render("restaurant/restaurant.hbs")
   }else{
     try {
-    const restaurantResult = await Restaurant.findOne({name:restaurantName})      
+    const restaurantResult = await Restaurant.findOne({name:restaurantName})     
     res.render("restaurant/search.hbs", {
       restaurantResult
     });
@@ -102,6 +103,7 @@ router.post("/:id", isLogged, async (req, res, next) => {
     const userModifyFav = await User.findByIdAndUpdate(req.session.loggedUser._id, {
       $addToSet: {favorites: actualId},
     })
+    
     // .select("name")
 
     // const idUserActive = await Rating.findOne({user: req.session.loggedUser._id})
