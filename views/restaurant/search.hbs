@@ -1,10 +1,28 @@
-<div>
 
-   <p>aquí está el resultado de la busqueda</p> 
-   <h2>{{restaurantResult.name}}</h2>
-   <h2>Location: {{restaurantResult.location}}</h2>
-   <h2>Style food: {{restaurantResult.style}}</h2>
-   <h2>Main dish: {{restaurantResult.mainDish}}</h2>
-   <h2>{{restaurantResult.image}}</h2>
-   
+
+<div class="card" style="width: 18rem;">
+<img src="{{restaurantResult.image}}"  class="card-img-top"
+ alt="restaurant" width="200px" />
+ <div class="card-body">
+
+  <h5 class="card-title"
+>Restaurant {{restaurantResult.name}}</h5>
+  <ul>
+    <li class="card-text"
+>Location: {{restaurantResult.location}}</li>
+    <li class="card-text"
+>Style: {{restaurantResult.style}}</li>
+    <li class="card-text"
+>Main Dish: {{restaurantResult.mainDish}}</li>
+  </ul>
+  
 </div>
+
+</div>
+
+
+
+  <br>
+  <a href="/restaurant">
+    <button class="btn btn-primary border border-2 border-white">Go home</button>
+  </a>

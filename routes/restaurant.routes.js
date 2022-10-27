@@ -39,7 +39,7 @@ router.post( "/create",isLogged,admin,uploader.single("image"),async (req, res, 
 //RUTAS PARA READ RESTAURANT LIST
 // GET Ruta de usuario para visualizar lista de restaurantes
 
-router.get("/", isLogged, async (req, res, next) => {
+router.get("/", isLogged, uploader.single("image"), async (req, res, next) => {
   try {
     const restaurantList = await Restaurant.find();
     res.render("restaurant/restaurant.hbs", {

@@ -1,13 +1,14 @@
 
 <div>
-  <nav class=" d-flex flex-row mb-4 justify-content-between">
+  <nav class=" d-flex flex-row mt-4 justify-content-between">
   {{!-- <img src="../images/foodie-logo.png" alt="logo-foodies" height="80px" /> --}}
-
-  <form action="/restaurant/search/{{restaurantResult._id}}" method="GET">
+<div class="container-fluid"></div>
+  <form action="/restaurant/search/{{restaurantResult._id}}" class="d-flex" role="search" method="GET">
     {{!-- <label for="name"></label> --}}
-    <input type="text" name="restaurantName">
-   <button class="btn btn-primary">Search a restaurant</button> 
+    <input type="search"  class="form-control me-2" placeholder="Find a restaurant" aria-label="Search" name="restaurantName">
+   <button class="btn btn-primary">Search</button> 
   </form>
+  </div>
   </nav>
 
   <div class=" d-flex flex-row  mb-4 justify-content-around">
@@ -17,13 +18,18 @@
   </div>
  
   <h3>Restaurants</h3>
-
+<div>
   {{#each restaurantList}}
-    <ul>
-      <a href="/restaurant/{{_id}}">{{name}}</a>
-    </ul>
+  <div class="card mb-3"></div>
+    <img src="{{image}}" class="card-img-top" alt="image-restaurant" width="60px">
+    <div class="card-body"></div>
+     <h5> <a href="/restaurant/{{_id}}" class="card-title">{{name}}</a></h5>
+      <p class="card-text">Comida {{style}}</p>
+      <p class="card-text"><small class="text-muted">{{location}}</small></p>
+    </div>
+    </div>
   {{/each}}
-
+</div>
   <br />
    
   {{#if powers}}
