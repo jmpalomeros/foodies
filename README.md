@@ -1,110 +1,84 @@
 FOODIES
+WHERE YOUR FAVS RESTAURANT ARE!
 
-Description
-Describe your project in one/two lines.
+Description.
+
+App de valoración y busqueda de restaurantes. Con FOODIES podrás buscar los restaurantes que más se ajustan a tu paladar y estilo de vida. 
+Comparte, valora y comenta tus experiencias gastronómicas. ¡Únete a nuestra comunidad!
+
+¡BE FOODIE!
+
 
 User Stories
-404 - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault
-500 - As a user I want to see a nice error page when the super team screws it up so that I know that is not my fault
-homepage - As a user I want to be able to access the homepage so that I see what the app is about and login and signup
-sign up - As a user I want to sign up on the webpage so that I can see all the events that I could attend
-login - As a user I want to be able to log in on the webpage so that I can get back to my account
-logout - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account
-events list - As a user I want to see all the events available so that I can choose which ones I want to attend
-events create - As a user I want to create an event so that I can invite others to attend
-events detail - As a user I want to see the event details and attendee list of one event so that I can decide if I want to attend
-event attend - As a user I want to be able to attend to event so that the organizers can count me in
-Backlog
-List of other features outside of the MVPs scope
+
+Una vez registrado y tras un posterior logado, el usuario puede buscar nuestra recomendaciones de restaurantes, ver su ubicación, datos relevantes y de interés así las valoraciones que ha recibido de otros usarios.
+
 
 User profile:
 
-see my profile
-upload my profile picture
-see other users profile
-list of events created by the user
-list events the user is attending
-Geo Location:
-
-add geolocation to events when creating
-show event in a map in event detail page
-show all events in a map in the event list page
-Homepage
+El usuario, una vez registrado, puede ampliar sus datos e incluir una fotografia de perfil.
+Tiene la posibilidad de editar y, en su caso, eliminar el perfil, así como la información que ha ido facilitando 
+en cuanto a sus valoraciones de los restaurantes visitados.
+Por último, dispone de la posibilidad de guardar en sus favoritos los restaurantes que recomendamos y desea visitar.
 
 ...
 ROUTES:
-GET /
 
-renders the homepage
-GET /auth/signup
+/* GET home page */
 
-redirects to / if user logged in
-renders the signup form (with flash msg)
-POST /auth/signup
+// GET "/auth/signup" => PARA RENDERIZAR PAGINAS DE REGISTR
 
-redirects to / if user logged in
-body:
-username
-email
-password
-GET /auth/login
+// POST "/auth/signup" => PARA CREAR USUARIO EN LA BASE DE DATOS
 
-redirects to / if user logged in
-renders the login form (with flash msg)
-POST /auth/login
+// GET "/auth/login" => RENDERIZA FORMULARIO DE ACCESO
 
-redirects to / if user logged in
-body:
-username
-password
-POST /auth/logout
+// POST "/auth/login" => PARA VALIDAR LOS DATOS DEL USUARIO EN LA BS
 
-body: (empty)
-GET /events
+// GET ("/auth/logout") => ruta para deslogar
 
-renders the event list + the create form
-POST /events/create
+//GET "/profile"=> ruta donde el usuario puede ver su perfil
 
-redirects to / if user is anonymous
-body:
-name
-date
-location
-description
-GET /events/:id
+//GET "profile/:id/edit"=> renderiza el formulario para editar los datos actuales del perfil
 
-renders the event detail page
-includes the list of attendees
-attend button if user not attending yet
-POST /events/:id/attend
+//POST "profile/:id/edit"=> recibe los datos editados y los actualiza
 
-redirects to / if user is anonymous
-body: (empty - the user is already stored in the session)
-Models
-User model
+//POST "/profile"/:id/delete" RUTA PARA ELIMINAR EL PERFIL
 
-username: String
-password: String
-Event model
+//GET "/rating/new-rating" => ruta que renderiza formulario para crear valoracion
 
-owner: ObjectId<User>
-name: String
-description: String
-date: Date
-location: String
-attendees: [ObjectId<User>]
-Links
-Trello
-Link to your trello board or picture of your physical board
+//POST "/rating/new-rating" => ruta para añadir la valoracion
 
-Git
-The url to your repository and to your deployed project
+//GET "/rating/:id/ratings" => renderizar todas las valoraciones de un mismo restaurante
 
-Repository Link
+//GET "/rating/my-ratings" => renderiza todas las opiniones del usuario logeado
 
-Deploy Link
+//GET "/rating/:id/my-ratings/edit" => renderiza el rating a editar
 
-Slides
-The url to your presentation slides
+//POST "/rating/:id/my-ratings/edit"
 
-Slides Link
+//POST "/rating/:id/delete"=>ruta para eliminar una valoracion
+
+//GET "restaurant/create"=> para visualizar formulario de registro de restaurante
+
+//POST "restaurant/create" => para enviar formulario a la BD
+
+// GET Ruta de usuario para visualizar lista de restaurantes
+
+//GET "/restaurant" ruta para randerizar un buscador de restaurantes
+
+// GET ("/restaurant/:id") Ruta para mostrar detalles de restaurante
+
+//POST "/restaurant/:id/"
+
+// GET "/restaurant/:id/edit" Ruta para mostrar detalles a editar del restaurante.
+
+//POST "/restaurant/:id/edit" Ruta para traer desde la BD los campos a editar y actualizar
+
+//POST "/restaurant/:id/delete" ruta para eliminar restaurant de la BD
+
+Para el desarrollo de la web nos hemos servido y hemos utilizado TRELLO y MIRO para organizar el trabajo y el flujo de la página.
+
+El repositorio se encuetra en: https://github.com/jmpalomeros/foodies
+
+La página se encuentra alojada en: https://foodies.cyclic.app/
+

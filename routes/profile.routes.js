@@ -65,7 +65,7 @@ router.post(
   }
 );
 
-//RUTA PARA ELIMINAR EL PERFIL
+//POST "/profile"/:id/delete" RUTA PARA ELIMINAR EL PERFIL
 
 router.post("/:id/delete", isLogged, async (req, res, next) => {
   const { id } = req.params;
