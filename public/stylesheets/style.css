@@ -35,3 +35,24 @@ h1 {
   text-decoration: none;
   
 }
+
+#create-rest {
+  margin: 2% 20% 5% 40%;
+}
+
+#details-rest {
+  margin: 2% 20% 5% 40%;
+}
+
+#edit-rest {
+  margin: 2% 20% 5% 40%;
+}
+
+#nav-home-list {
+  margin: 1% ;
+}
+
+#search-rest-result {
+  margin: 2% 20% 5% 40%
+}
+

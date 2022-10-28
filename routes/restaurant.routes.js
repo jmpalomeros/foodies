@@ -53,7 +53,7 @@ router.get("/", isLogged, uploader.single("image"), async (req, res, next) => {
 //RUTA DEL BUSCADOR DE RESTAURANT
 //GET "/restaurant" ruta para randerizar un buscador de restaurantes
 
-router.get("/search", isLogged, async (req, res, next) => {
+router.get("/search", isLogged, uploader.single("image"), async (req, res, next) => {
   const { restaurantName } = req.query;
   console.log(req.query);
   if (restaurantName === undefined || restaurantName === "") {
