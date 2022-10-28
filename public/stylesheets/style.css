@@ -16,3 +16,49 @@ h1 {
   color: 15px;
 }
 
+#sign-up{
+  margin: 2% 20% 5% 20%;
+
+}
+
+#list-home h3 {
+  margin: 2% 20% 5% 20%; 
+}
+
+#list-home a {
+  text-decoration: none;
+}
+
+#list-bucle {
+  margin: 2% 20% 5% 20%;
+  
+}
+
+#list-bucle a {
+  text-decoration: none;
+  
+}
+#profile{
+  margin: 2% 20% 5% 20%;
+
+}
+#edit-profile{
+  margin: 2% 20% 5% 20%;
+
+}
+#my-ratings{
+  margin: 2% 20% 5% 20%;
+
+}
+#edit-rating{
+  margin: 2% 20% 5% 20%;
+
+}
+#new-rating{
+  margin: 2% 20% 5% 20%;
+
+}
+#rest-rating{
+  margin: 2% 20% 5% 20%;
+
+}

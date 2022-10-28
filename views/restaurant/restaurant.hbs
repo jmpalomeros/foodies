@@ -23,21 +23,23 @@
   </div>
 </nav>
 
-
+<div id="list-home">
  
   <h3>Restaurants</h3>
 <div>
   {{#each restaurantList}}
-  
+  <div id="list-bucle">
   <div class="card mb-3"></div>
-    <img src="{{image}}" class="card-img-top" alt="image-restaurant" width="60px">
+    <img src="{{image}}" class="card-img-top" alt="image-restaurant" width="40px">
     <div class="card-body"></div>
      <h5> <a href="/restaurant/{{_id}}" class="card-title">{{name}}</a></h5>
       <p class="card-text">Comida {{style}}</p>
       <p class="card-text"><small class="text-muted">{{location}}</small></p>
     </div>
     </div>
+    </div>
   {{/each}}
+</div>
 </div>
 
    
