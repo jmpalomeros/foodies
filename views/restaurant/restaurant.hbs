@@ -15,7 +15,7 @@
           <a class="nav-link" href="/auth/logout">Log out</a>
         </li>
       </ul>
-      <form class="d-flex" role="search">
+      <form action="/restaurant/search/{{restaurantResult._id}}" class="d-flex"  role="search" method="GET">
         <input class="form-control me-2" type="search" placeholder="Find a restaurant" aria-label="Search" name="restaurantName">
         <button class="btn btn-primary" type="submit">Search</button>
       </form>
