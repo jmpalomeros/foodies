@@ -10,17 +10,20 @@
   
   <h2>User´s opinion</h2>
 
-
+  
   {{#each restaurantRating}}
-  <div class="card" style="width: 18rem;"></div>
-  <div class="card-body"></div>
+    <div class="card" style="width: 18rem;">
     {{#each this.user}}
-      <h4>{{this.username}}</h4>
+      <p class="card-text">{{this.username}}</p>
     {{/each}}
+    <div class="card-body">
     <p class="card-text">{{this.rating}}</p>
     <p class="card-text">{{this.recomendedDish}}</p>
     <p class="card-text">{{this.commentary}}</p>
+    </div>
+    </div>
   {{/each}}
+   
   <a href="/restaurant/{{restaurantRating._id}}">
     <button class="btn btn-primary border border-2 border-white">Go home</button>
   </a>
