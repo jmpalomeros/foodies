@@ -16,11 +16,22 @@ h1 {
   color: 15px;
 }
 
-/* #formulario-sign {
-  margin-right: 80%
 
-/* } */
-/* .patata {
-  /* margin: 35%; */
-  margin: 0% 30% 0% 30%
-} */ 
+
+#list-home h3 {
+  margin: 2% 20% 5% 20%; 
+}
+
+#list-home a {
+  text-decoration: none;
+}
+
+#list-bucle {
+  margin: 2% 20% 5% 20%;
+  
+}
+
+#list-bucle a {
+  text-decoration: none;
+  
+}

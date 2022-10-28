@@ -3,11 +3,11 @@
 <nav class="navbar bg-light">
         <div class="container">
           <a class="navbar-brand" href="#">
-            <img src="../images/foodie-logo.png" alt="foodies" height="80">
+            <img src="/images/foodie-logo.png" alt="foodies" height="80">
           </a>
         </div>
       </nav>
-
+<div class="d-flex flex-colum justify-content-center aling-items-left mt-2">
   <h3>Edit your profile</h3>
   <div class="mx5 px5" id="formulario-sign">
   <form action="/profile/{{editedProfile._id}}/edit" method="POST" enctype="multipart/form-data">
@@ -16,7 +16,7 @@
     <input class="form-control" type="text" name="username" value="{{editedProfile.username}}" />
     </div>
     <div class="mb-3">
-    <label class="form-label" for="email">E-amil: </label>
+    <label class="form-label" for="email">E-mail: </label>
     <input class="form-control" type="text" name="email" value="{{editedProfile.email}}" />
     </div>
     <div class="mb-3">
@@ -42,4 +42,5 @@
   <a href="/restaurant">
     <button class="btn btn-primary border border-2 border-white">Go home</button>
   </a>
+  </div>
   </div>
