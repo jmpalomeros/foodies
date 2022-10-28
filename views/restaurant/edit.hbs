@@ -10,40 +10,44 @@
 <div id="edit-rest">
 
   <h3>Edit restaurant</h3>
-
+  <div class="mx5 px5">
   <form
     action="/restaurant/{{editRestaurant._id}}/edit"
     method="POST"
     enctype="multipart/form-data"
   >
-
-    <label for="name">Name</label>
-    <input type="text" name="name" value="{{editRestaurant.name}}" />
-    <br />
-    <label for="location">Location</label>
-    <input type="text" name="location" value="{{editRestaurant.location}}" />
-    <br />
-    <label for="style">Style</label>
+    <div class="mb-3">
+    <label class="form-label" for="name">Name</label>
+    <input class="form-control" type="text" name="name" value="{{editRestaurant.name}}" />
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="location">Location</label>
+    <input class="form-control" type="text" name="location" value="{{editRestaurant.location}}" />
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="style">Style</label>
 
     <select name="style">
-      <option value="">Choose a style</option>
+      <option  value="">Choose a style</option>
       {{#each styleList}}
         <option value="{{this}}">{{this}}</option>
       {{/each}}
     </select>
-    <br />
-    <label for="mainDish">Main dish</label>
-    <input type="text" name="mainDish" value="{{editRestaurant.mainDish}}" />
-    <br />
-    <label for="image">Upload Image</label>
-    <input type="file" name="image" />
-
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="mainDish">Main dish</label>
+    <input class="form-control" type="text" name="mainDish" value="{{editRestaurant.mainDish}}" />
+    </div>
+    <div class="mb-3">
+    <label class="form-label" for="image">Upload Image</label>
+    <input class="form-control" type="file" name="image" />
+    </div>
     <p style="color: red ">{{errorMessage}}</p>
 
     <button class="btn btn-primary border border-2 border-white">Upload</button>
 
   </form>
-
+  </div>
   <a href="/restaurant">
     <button class="btn btn-primary border border-2 border-white">Go home</button>
   </a>
